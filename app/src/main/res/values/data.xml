@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="data_name">
+        <item>Ahmad Arif Faizin</item>
+        <item>Irfan Maulana</item>
+        <item>Ibnu Sina Wardy</item>
+        <item>Edi Kurniawan</item>
+        <item>Ar Firman Syahputra</item>
+        <item>Nando Septian Husni</item>
+        <item>Dika Budiaji</item>
+        <item>YONI SETIAWAN</item>
+        <item>Hardiansa</item>
+        <item>Levi Rizki Saputra</item>
+    </string-array>
+    
+    <string-array name="data_username">
+        <item>arifaizin</item>
+        <item>mazipan</item>
+        <item>iboen</item>
+        <item>edicybereye</item>
+        <item>arfirman1402</item>
+        <item>nandot12</item>
+        <item>kodeartisan</item>
+        <item>yonisetiawan</item>
+        <item>hardi-dev</item>
+        <item>levirs565</item>
+    </string-array>
+    
+    <array name="data_avatar">
+        <item>@drawable/avatar_arifaizin</item>
+        <item>@drawable/avatar_mazipan</item>
+        <item>@drawable/avatar_iboen</item>
+        <item>@drawable/avatar_edicybereye</item>
+        <item>@drawable/avatar_arfirman1402</item>
+        <item>@drawable/avatar_nandot12</item>
+        <item>@drawable/avatar_kodeartisan</item>
+        <item>@drawable/avatar_yonisetiawan</item>
+        <item>@drawable/avatar_hardi_dev</item>
+        <item>@drawable/avatar_levirs565</item>
+    </array>
+    
+    <string-array name="data_company">
+        <item>Dicoding Indonesia</item>
+        <item>Tokopedia</item>
+        <item>GITS Indonesia</item>
+        <item>Whita Aplikasi Nusantara</item>
+        <item>Bukalapak</item>
+        <item>udacoding</item>
+        <item>idkotlinx</item>
+        <item>NIOMIC ONLINE CODING BOOTCAMP</item>
+        <item>Flock Creative Network</item>
+        <item>-</item>
+    </string-array>
+
+    <string-array name="data_location">
+        <item>Semarang, Indonesia</item>
+        <item>Jakarta, Indonesia</item>
+        <item>Bandung</item>
+        <item>Jakarta</item>
+        <item>South Jakarta, Jakarta, Indonesia</item>
+        <item>padang</item>
+        <item>West Java, Indonesia</item>
+        <item>JAKARTA</item>
+        <item>Jakarta Selatan</item>
+        <item>Pacitan, Jawa Timur, Indonesia</item>
+    </string-array>
+
+    <integer-array name="data_repository">
+        <item>126</item>
+        <item>111</item>
+        <item>26</item>
+        <item>52</item>
+        <item>17</item>
+        <item>167</item>
+        <item>461</item>
+        <item>171</item>
+        <item>49</item>
+        <item>15</item>
+    </integer-array>
+
+    <integer-array name="data_follower">
+        <item>52</item>
+        <item>860</item>
+        <item>172</item>
+        <item>71</item>
+        <item>101</item>
+        <item>157</item>
+        <item>72</item>
+        <item>26</item>
+        <item>6</item>
+        <item>8</item>
+    </integer-array>
+
+    <integer-array name="data_following">
+        <item>14</item>
+        <item>308</item>
+        <item>0</item>
+        <item>6</item>
+        <item>185</item>
+        <item>39</item>
+        <item>13</item>
+        <item>9</item>
+        <item>6</item>
+        <item>11</item>
+    </integer-array>
+
+</resources>
