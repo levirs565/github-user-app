@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                tools:text="Name" />
+                tools:text="@string/name" />
 
             <TextView
                 android:id="@+id/tv_user_name"
@@ -41,7 +41,7 @@
                 android:layout_alignBaseline="@id/tv_name"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@id/tv_name"
-                tools:text="User Name" />
+                tools:text="@string/user_name" />
 
             <ImageView
                 android:id="@+id/img_company"
@@ -59,7 +59,7 @@
                 android:layout_alignBottom="@id/img_company"
                 android:layout_marginStart="8dp"
                 android:layout_toEndOf="@+id/img_company"
-                tools:text="Company" />
+                tools:text="@string/company" />
 
         </RelativeLayout>
     </LinearLayout>

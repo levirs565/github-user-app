@@ -19,14 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        tools:text="Name"
+        tools:text="@string/name"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
     <TextView
         android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="User Name"
+        tools:text="@string/user_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
     <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            tools:text="Company"
+            tools:text="@string/company"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
         <ImageView
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            tools:text="Company"
+            tools:text="@string/location"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     </LinearLayout>
@@ -73,14 +73,14 @@
             android:id="@+id/tv_repository"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Repository"
+            tools:text="@string/details_repo_count"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
         <TextView
             android:id="@+id/tv_follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Follower"
+            tools:text="@string/details_follower_count"
             android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
@@ -88,7 +88,7 @@
             android:id="@+id/tv_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Following"
+            tools:text="@string/details_following_count"
             android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 

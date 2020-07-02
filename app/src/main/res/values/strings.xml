@@ -3,4 +3,8 @@
     <string name="details_repo_count">%d Repository</string>
     <string name="details_follower_count">%d Follower</string>
     <string name="details_following_count">%d Following</string>
+    <string name="name">Name</string>
+    <string name="user_name">User Name</string>
+    <string name="company">Company</string>
+    <string name="location">Location</string>
 </resources>
