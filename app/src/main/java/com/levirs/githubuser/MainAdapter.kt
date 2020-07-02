@@ -1,5 +1,6 @@
 package com.levirs.githubuser
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,12 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             tvName.text = user.name
             tvUserName.text = user.userName
             tvCompany.text = user.company
+
+            itemView.setOnClickListener {
+                val detailIntent = Intent(it.context, DetailActivity::class.java)
+                detailIntent.putExtra(DetailActivity.EXTRA_USER, user)
+                it.context.startActivity(detailIntent)
+            }
         }
     }
 }
