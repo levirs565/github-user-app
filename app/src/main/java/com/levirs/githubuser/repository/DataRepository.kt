@@ -16,6 +16,7 @@ class DataRepository(private val ctx: Context) {
 
         for (index in userNameList.indices) {
             result.add(User(
+                id = index,
                 userName = userNameList[index],
                 name = nameList[index],
                 avatar = avatarList.getResourceId(index, 0),
@@ -38,6 +39,7 @@ class DataRepository(private val ctx: Context) {
         val followerList = getIntArray(R.array.data_follower)
 
         val result = UserDetails(
+            id = id,
             userName = userNameList[id],
             name = nameList[id],
             avatar = avatarList.getResourceId(id, 0),

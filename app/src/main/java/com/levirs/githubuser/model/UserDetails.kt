@@ -1,6 +1,7 @@
 package com.levirs.githubuser.model
 
 data class UserDetails(
+    val id: Int,
     val userName: String,
     val name: String,
     val avatar: Int,
