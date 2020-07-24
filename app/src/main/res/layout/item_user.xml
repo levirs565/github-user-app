@@ -9,7 +9,7 @@
     android:clickable="true"
     android:foreground="?android:selectableItemBackground">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:padding="16dp">
@@ -19,48 +19,35 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/avatar_levirs565" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp">
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/name" />
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                tools:text="@string/name" />
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_name"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@id/tv_name"
-                tools:text="@string/user_name" />
-
-            <ImageView
-                android:id="@+id/img_company"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="4dp"
-                android:layout_below="@+id/tv_name"
-                android:layout_alignStart="@id/tv_name"
-                android:src="@drawable/ic_company" />
-
-            <TextView
-                android:id="@+id/tv_company"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/img_company"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/img_company"
-                tools:text="@string/company" />
-
-        </RelativeLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/tv_name"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/tv_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="@string/user_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
