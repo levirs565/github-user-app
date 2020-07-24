@@ -11,7 +11,6 @@ class DataRepository(private val ctx: Context) {
         val userNameList = getStringArray(R.array.data_username)
         val nameList = getStringArray(R.array.data_name)
         val avatarList = obtainTypedArray(R.array.data_avatar)
-        val companyList = getStringArray(R.array.data_company)
         val result = ArrayList<User>()
 
         for (index in userNameList.indices) {
@@ -19,8 +18,7 @@ class DataRepository(private val ctx: Context) {
                 id = index,
                 userName = userNameList[index],
                 name = nameList[index],
-                avatar = avatarList.getResourceId(index, 0),
-                company = companyList[index]
+                avatar = avatarList.getResourceId(index, 0)
             ))
         }
 

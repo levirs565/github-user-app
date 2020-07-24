@@ -29,13 +29,11 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         private val imgAvatar = itemView.img_avatar
         private val tvName = itemView.tv_name
         private val tvUserName = itemView.tv_user_name
-        private val tvCompany = itemView.tv_company
 
         fun bind(user: User) {
             imgAvatar.load(user.avatar)
             tvName.text = user.name
             tvUserName.text = user.userName
-            tvCompany.text = user.company
 
             itemView.setOnClickListener {
                 val detailIntent = Intent(it.context, DetailActivity::class.java)
