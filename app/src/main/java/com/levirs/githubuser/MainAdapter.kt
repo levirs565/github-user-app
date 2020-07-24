@@ -4,6 +4,9 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.levirs.githubuser.model.User
@@ -22,7 +25,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list[position], position == list.size -1)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,7 +33,16 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         private val tvName = itemView.tv_name
         private val tvUserName = itemView.tv_user_name
 
-        fun bind(user: User) {
+        fun bind(user: User, isLast: Boolean) {
+            itemView.updateLayoutParams<RecyclerView.LayoutParams> {
+                val bottomMargin = if (isLast)
+                    itemView.context.resources.getDimension(R.dimen.user_card_margin).toInt()
+                else 0
+                updateMargins(
+                    bottom = bottomMargin
+                )
+            }
+
             imgAvatar.load(user.avatar)
             tvName.text = user.name
             tvUserName.text = user.userName
