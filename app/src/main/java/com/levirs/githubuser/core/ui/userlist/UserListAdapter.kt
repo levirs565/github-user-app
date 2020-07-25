@@ -1,36 +1,46 @@
-package com.levirs.githubuser
+package com.levirs.githubuser.core.ui.userlist
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.levirs.githubuser.model.User
+import com.levirs.githubuser.feature.detail.DetailActivity
+import com.levirs.githubuser.R
+import com.levirs.githubuser.core.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
-    var list = arrayOf<User>()
+class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
+    private var mUserList = arrayListOf<User>()
+
+    fun setUserList(list: List<User>) {
+        mUserList.clear()
+        mUserList.addAll(list)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(
-            inflater.inflate(R.layout.item_user, parent, false)
+            inflater.inflate(
+                R.layout.item_user,
+                parent,
+                false
+            )
         )
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = mUserList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position], position == list.size -1)
+        holder.bind(mUserList[position], position == mUserList.size -1)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imgAvatar = itemView.img_avatar
-        private val tvName = itemView.tv_name
         private val tvUserName = itemView.tv_user_name
 
         fun bind(user: User, isLast: Boolean) {
@@ -44,7 +54,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             }
 
             imgAvatar.load(user.avatar)
-            tvName.text = user.name
             tvUserName.text = user.userName
 
             itemView.setOnClickListener {

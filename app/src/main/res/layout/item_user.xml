@@ -28,26 +28,13 @@
 
 
         <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_user_name"
-            app:layout_constraintStart_toEndOf="@+id/img_avatar"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/name" />
-
-        <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/tv_name"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/tv_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/user_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

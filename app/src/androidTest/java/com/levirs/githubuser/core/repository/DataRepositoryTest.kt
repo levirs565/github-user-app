@@ -1,7 +1,7 @@
-package com.levirs.githubuser.repository
+package com.levirs.githubuser.core.repository
 
 import androidx.test.platform.app.InstrumentationRegistry
-import com.levirs.githubuser.model.User
+import com.levirs.githubuser.core.model.User
 import org.junit.Test
 
 import org.junit.Assert.*
