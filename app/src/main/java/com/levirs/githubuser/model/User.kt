@@ -1,12 +1,14 @@
 package com.levirs.githubuser.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
     val id: Int,
+    @SerializedName("login")
     val userName: String,
-    val name: String,
-    val avatar: Int
+    @SerializedName("avatar_url")
+    val avatar: String
 ): Parcelable
