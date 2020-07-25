@@ -1,4 +1,4 @@
-package com.levirs.githubuser.model
+package com.levirs.githubuser.core.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

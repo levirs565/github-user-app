@@ -1,8 +1,8 @@
-package com.levirs.githubuser.service
+package com.levirs.githubuser.core.service
 
-import com.levirs.githubuser.model.SearchResult
-import com.levirs.githubuser.model.User
-import com.levirs.githubuser.model.UserDetails
+import com.levirs.githubuser.core.model.SearchResult
+import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.core.model.UserDetails
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

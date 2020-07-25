@@ -1,4 +1,4 @@
-package com.levirs.githubuser.model
+package com.levirs.githubuser.core.model
 
 import com.google.gson.annotations.SerializedName
 

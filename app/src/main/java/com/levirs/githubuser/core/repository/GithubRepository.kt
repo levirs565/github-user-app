@@ -1,6 +1,6 @@
-package com.levirs.githubuser.repository
+package com.levirs.githubuser.core.repository
 
-import com.levirs.githubuser.service.GithubService
+import com.levirs.githubuser.core.service.GithubService
 
 class GithubRepository(private val service: GithubService) {
     suspend fun getUserList() = service.getUserList()

@@ -1,9 +1,8 @@
-package com.levirs.githubuser.repository
+package com.levirs.githubuser.core.repository
 
-import com.levirs.githubuser.model.User
-import com.levirs.githubuser.service.GithubService
+import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.core.service.GithubService
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Test
 
 import org.junit.Assert.*
