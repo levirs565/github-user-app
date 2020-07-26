@@ -11,4 +11,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_search">Search</string>
+
+    <string name="message_cannot_load">Cannot load %1$s. Error: \n%2$s\nTry again.</string>
+    <string name="action_reload">Reload</string>
+    <string name="user_list">user list</string>
 </resources>

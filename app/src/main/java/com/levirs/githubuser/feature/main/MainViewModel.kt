@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.levirs.githubuser.core.CoreProvider
 import com.levirs.githubuser.core.model.User
 import kotlinx.coroutines.*
+import java.io.IOException
+import java.lang.Exception
 
 class MainViewModel: ViewModel() {
     companion object {
@@ -17,8 +19,10 @@ class MainViewModel: ViewModel() {
     private val mRepository = CoreProvider.provideRepository()
     private val mIOScope = viewModelScope + Dispatchers.IO
     private var mJob: Job? = null
-    private val mUserList =  MutableLiveData<List<User>?>()
+    private val mUserList = MutableLiveData<List<User>?>()
+    private val mError = MutableLiveData<String>()
     val userList: LiveData<List<User>?> = mUserList
+    val isError: LiveData<String> = mError
 
     private fun cancel() = mJob?.run {
         if (isActive)
@@ -30,9 +34,15 @@ class MainViewModel: ViewModel() {
         cancel()
         mUserList.value = null
         mJob = mIOScope.launch {
-            Log.d(TAG, "fetchUserList: launched")
-            mUserList.postValue(mRepository.getUserList())
-            Log.d(TAG, "fetchUserList: finish")
+            try {
+                Log.d(TAG, "fetchUserList: launched")
+                mUserList.postValue(mRepository.getUserList())
+                Log.d(TAG, "fetchUserList: finish")
+            } catch (e: IOException) {
+                Log.d(TAG, "fetchUserList: error ${e.message}")
+                e.printStackTrace()
+                mError.postValue(e.message)
+            }
         }
     }
 
@@ -41,9 +51,15 @@ class MainViewModel: ViewModel() {
         cancel()
         mUserList.value = null
         mJob = mIOScope.launch {
-            Log.d(TAG, "searchUser: launched")
-            mUserList.postValue(mRepository.searchUser(query).resultList)
-            Log.d(TAG, "searchUser: finish")
+            try {
+                Log.d(TAG, "searchUser: launched")
+                mUserList.postValue(mRepository.searchUser(query).resultList)
+                Log.d(TAG, "searchUser: finish")
+            } catch (e: IOException) {
+                Log.d(TAG, "searchUser: error ${e.message}")
+                e.printStackTrace()
+                mError.postValue(e.message)
+            }
         }
     }
 }

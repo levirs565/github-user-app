@@ -30,9 +30,25 @@ abstract class UserListFragment : Fragment() {
         adapter = UserListAdapter()
         rv_user.layoutManager = LinearLayoutManager(context)
         rv_user.adapter = adapter
+        btn_reload.setOnClickListener { reloadList() }
     }
 
     fun setUserList(list: List<User>) {
         adapter.setUserList(list)
     }
+
+    fun showLoading(show: Boolean) {
+        rv_user.visibility = if (show) View.GONE else View.VISIBLE
+        progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        layout_err.visibility = View.GONE
+    }
+
+    fun showError(listName: String, errMessage: String) {
+        rv_user.visibility = View.GONE
+        progressBar.visibility = View.GONE
+        tv_err_message.text = getString(R.string.message_cannot_load, listName, errMessage)
+        layout_err.visibility = View.VISIBLE
+    }
+
+    abstract fun reloadList()
 }

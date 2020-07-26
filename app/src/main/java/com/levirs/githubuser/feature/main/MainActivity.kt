@@ -9,8 +9,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.levirs.githubuser.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainFragment.Listener {
     private val mViewModel: MainViewModel by viewModels()
+    private lateinit var mSearchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,24 +30,32 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_main, menu)
 
         val searchItem = menu.findItem(R.id.app_bar_search)
-        val searchView = searchItem.actionView as SearchView
+        mSearchView = searchItem.actionView as SearchView
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        mSearchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        mSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null && newText.isNotEmpty())
-                    mViewModel.searchUser(newText)
-                else mViewModel.fetchUserList()
+                load(newText)
                 return true
             }
 
         })
 
         return true
+    }
+
+    private fun load(newText: String?) {
+        if (newText != null && newText.isNotEmpty())
+            mViewModel.searchUser(newText)
+        else mViewModel.fetchUserList()
+    }
+
+    override fun onReloadList() {
+        load(mSearchView.query?.toString())
     }
 }
