@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.levirs.githubuser.core.CoreProvider
+import com.levirs.githubuser.core.extension.launchToUpdateLiveData
 import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.extension.update
 import com.levirs.githubuser.core.model.DataState
@@ -34,21 +35,8 @@ class DetailViewModel: ViewModel() {
     }
 
     fun load() {
-        mIOScpe.launch {
-            mUserDetails.update {
-                data = null
-                error = null
-            }
-            try {
-                val details = mRepository.getUserDetails(mCurrentUser.userName)
-                mUserDetails.update {
-                    data = details
-                }
-            } catch (e: IOException) {
-                mUserDetails.update {
-                    error = e.message
-                }
-            }
-        }
+        mIOScpe.launchToUpdateLiveData(mUserDetails, suspend {
+            mRepository.getUserDetails(mCurrentUser.userName)
+        })
     }
 }
