@@ -12,6 +12,7 @@ import com.levirs.githubuser.core.model.UserDetails
 import com.levirs.githubuser.core.ui.setVisible
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
+import kotlinx.android.synthetic.main.context_error.*
 
 class DetailActivity : AppCompatActivity() {
     companion object {

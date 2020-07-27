@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.model.User
+import kotlinx.android.synthetic.main.context_error.*
 import kotlinx.android.synthetic.main.fragment_user_list.*
 
 /**
