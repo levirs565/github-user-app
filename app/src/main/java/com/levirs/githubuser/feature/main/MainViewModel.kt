@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.levirs.githubuser.core.CoreProvider
+import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.model.User
 import kotlinx.coroutines.*
 import java.io.IOException
@@ -21,8 +22,8 @@ class MainViewModel: ViewModel() {
     private var mJob: Job? = null
     private val mUserList = MutableLiveData<List<User>?>()
     private val mError = MutableLiveData<String>()
-    val userList: LiveData<List<User>?> = mUserList
-    val isError: LiveData<String> = mError
+    val userList = mUserList.toLiveData()
+    val isError = mError.toLiveData()
 
     private fun cancel() = mJob?.run {
         if (isActive)
