@@ -27,7 +27,8 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val user: User? = intent.getParcelableExtra(EXTRA_USER)
-        if (user != null) {
+        // cek apakah pertama kali dijalankan
+        if (user != null && savedInstanceState == null) {
             mViewModel.setUser(user)
         }
 
