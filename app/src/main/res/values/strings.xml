@@ -15,4 +15,5 @@
     <string name="message_cannot_load">Cannot load %1$s. Error: \n%2$s\nTry again.</string>
     <string name="action_reload">Reload</string>
     <string name="user_list">user list</string>
+    <string name="user_details">user details</string>
 </resources>
