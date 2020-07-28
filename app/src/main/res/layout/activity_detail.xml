@@ -22,22 +22,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/TextHidden">
 
-            <FrameLayout
+            <com.levirs.githubuser.core.ui.view.DataStatefulView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:id="@+id/state_view">
 
                 <include layout="@layout/content_detail"/>
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
-
-                <include layout="@layout/context_error"/>
-
-            </FrameLayout>
+            </com.levirs.githubuser.core.ui.view.DataStatefulView>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

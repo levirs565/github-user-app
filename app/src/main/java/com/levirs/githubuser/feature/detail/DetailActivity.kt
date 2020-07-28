@@ -11,7 +11,7 @@ import com.levirs.githubuser.core.model.UserDetails
 import com.levirs.githubuser.core.extension.setVisible
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
-import kotlinx.android.synthetic.main.context_error.*
+import kotlinx.android.synthetic.main.content_error.*
 
 class DetailActivity : AppCompatActivity() {
     companion object {
@@ -33,26 +33,15 @@ class DetailActivity : AppCompatActivity() {
         }
 
         mViewModel.userDetails.observe(this, Observer {
-            val showError = it.error != null
-            layout_err.setVisible(showError)
-            if (!showError) {
-                val dataLoaded = it.data != null
-                layout_detail.setVisible(dataLoaded)
-                progressBar.setVisible(!dataLoaded)
-
-                if (dataLoaded) bindDetails(it.data!!)
-            } else {
-                layout_detail.setVisible(false)
-                progressBar.setVisible(false)
-                tv_err_message.text = getString(
-                    R.string.message_cannot_load,
-                    getString(R.string.user_details),
-                    it.error
-                )
-            }
+            if (it.error == null) {
+                if (it.data != null) {
+                    state_view.showView()
+                    bindDetails(it.data!!)
+                } else state_view.showLoading()
+            } else state_view.showError(getString(R.string.user_details), it.error!!)
         })
 
-        btn_reload.setOnClickListener {
+        state_view.setReloadAction {
             mViewModel.load()
         }
 

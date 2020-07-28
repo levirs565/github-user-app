@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.levirs.githubuser.core.ui.view.DataStatefulView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".core.ui.userlist.UserListFragment">
+    tools:context=".core.ui.userlist.UserListFragment"
+    android:id="@+id/root_view">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_user"
@@ -11,13 +12,4 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/item_user" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    <include layout="@layout/context_error"/>
-
-</FrameLayout>
+</com.levirs.githubuser.core.ui.view.DataStatefulView>

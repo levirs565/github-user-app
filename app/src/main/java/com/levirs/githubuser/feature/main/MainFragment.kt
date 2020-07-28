@@ -19,9 +19,9 @@ class MainFragment: UserListFragment() {
         mViewModel.userList.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 setUserList(it)
-                showLoading(false)
+                showView()
             } else {
-                showLoading(true)
+                showLoading()
             }
         })
 

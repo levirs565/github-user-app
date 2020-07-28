@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.model.User
-import kotlinx.android.synthetic.main.context_error.*
 import kotlinx.android.synthetic.main.fragment_user_list.*
 
 /**
@@ -31,24 +30,25 @@ abstract class UserListFragment : Fragment() {
         adapter = UserListAdapter()
         rv_user.layoutManager = LinearLayoutManager(context)
         rv_user.adapter = adapter
-        btn_reload.setOnClickListener { reloadList() }
+        root_view.setReloadAction {
+            reloadList()
+        }
     }
 
     fun setUserList(list: List<User>) {
         adapter.setUserList(list)
     }
 
-    fun showLoading(show: Boolean) {
-        rv_user.visibility = if (show) View.GONE else View.VISIBLE
-        progressBar.visibility = if (show) View.VISIBLE else View.GONE
-        layout_err.visibility = View.GONE
+    fun showView() {
+        root_view.showView()
+    }
+
+    fun showLoading() {
+        root_view.showLoading()
     }
 
     fun showError(listName: String, errMessage: String) {
-        rv_user.visibility = View.GONE
-        progressBar.visibility = View.GONE
-        tv_err_message.text = getString(R.string.message_cannot_load, listName, errMessage)
-        layout_err.visibility = View.VISIBLE
+        root_view.showError(listName, errMessage)
     }
 
     abstract fun reloadList()

@@ -16,9 +16,10 @@ class FollowerFragment: UserListFragment() {
         mViewModel.followerList.observe(viewLifecycleOwner, Observer {
             if (it.error == null) {
                 val isLoading = it.data == null
-                showLoading(isLoading)
-                if (!isLoading)
+                if (!isLoading) {
                     setUserList(it.data!!)
+                    showView()
+                } else showLoading()
             } else showError(getString(R.string.user_follower_list), it.error!!)
         })
     }
