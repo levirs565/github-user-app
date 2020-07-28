@@ -16,4 +16,9 @@
     <string name="action_reload">Reload</string>
     <string name="user_list">user list</string>
     <string name="user_details">user details</string>
+    <string name="user_follower_list">user follower list</string>
+    <string name="user_following_list">user following list</string>
+
+    <string name="following">Following</string>
+    <string name="follower">Follower</string>
 </resources>

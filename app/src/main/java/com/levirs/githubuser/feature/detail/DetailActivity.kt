@@ -56,6 +56,9 @@ class DetailActivity : AppCompatActivity() {
         btn_reload.setOnClickListener {
             mViewModel.load()
         }
+
+        view_pager.adapter = DetailPagerAdapter(supportFragmentManager, this)
+        tab_layout.setupWithViewPager(view_pager)
     }
 
     private fun bindDetails(user: UserDetails) {
