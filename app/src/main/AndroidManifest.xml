@@ -12,8 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".feature.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".feature.main.MainActivity">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".feature.main.MainActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".feature.main.MainActivity"/>
+
+        </activity>
+        <activity android:name=".feature.main.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

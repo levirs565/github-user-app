@@ -25,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val user: User? = intent.getParcelableExtra(EXTRA_USER)
         // cek apakah pertama kali dijalankan
