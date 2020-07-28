@@ -51,5 +51,9 @@ abstract class UserListFragment : Fragment() {
         root_view.showError(listName, errMessage)
     }
 
+    fun setGravity(gravity: Int) {
+        root_view.setGravity(gravity)
+    }
+
     abstract fun reloadList()
 }

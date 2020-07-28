@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ProgressBar
+import androidx.core.view.marginBottom
+import androidx.core.view.setMargins
+import androidx.core.view.updateLayoutParams
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.extension.setVisible
 import kotlinx.android.synthetic.main.content_error.view.*
@@ -48,9 +51,9 @@ class DataStatefulView @JvmOverloads constructor(
     }
 
     private fun changeViewVisibility(view: Boolean, progress: Boolean, error: Boolean) {
-        mDataView.setVisible(view, true)
-        mProgressBar.setVisible(progress, true)
-        mErrorLayout.setVisible(error, true)
+        mDataView.setVisible(view)
+        mProgressBar.setVisible(progress)
+        mErrorLayout.setVisible(error)
     }
 
     fun showView() = changeViewVisibility(true, false, false)
@@ -65,5 +68,10 @@ class DataStatefulView @JvmOverloads constructor(
 
     fun setReloadAction(l: (() -> Unit)?) {
         mReloadAction = l
+    }
+
+    fun setGravity(gravity: Int) {
+        (mProgressBar.layoutParams as LayoutParams).gravity = gravity
+        (mErrorLayout.layoutParams as LayoutParams).gravity = gravity
     }
 }

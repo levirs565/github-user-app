@@ -1,6 +1,7 @@
 package com.levirs.githubuser.feature.detail.fragment
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -23,6 +24,7 @@ class FollowingFragment: UserListFragment() {
 
             } else showError(getString(R.string.user_following_list), it.error!!)
         })
+        setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL)
     }
 
     override fun reloadList() {
