@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.levirs.githubuser.core.model.DataState
 import com.levirs.githubuser.core.model.UserDetails
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
 

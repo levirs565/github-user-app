@@ -17,19 +17,12 @@ class MainFragment: UserListFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         mViewModel.userList.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                setUserList(it)
-                showView()
-            } else {
-                showLoading()
-            }
-        })
-
-        mViewModel.isError.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
-                showError(getString(R.string.user_list), it)
-            }
+            if (it.error == null) {
+                if (it.data != null) {
+                    setUserList(it.data!!)
+                    showView()
+                } else showLoading()
+            } else showError(getString(R.string.user_list), it.error!!)
         })
     }
 
