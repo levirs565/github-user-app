@@ -21,7 +21,7 @@ class FollowingFragment: UserListFragment() {
                     showView()
                 } else showLoading()
 
-            } else showError(getString(R.string.user_follower_list), it.error!!)
+            } else showError(getString(R.string.user_following_list), it.error!!)
         })
     }
 
