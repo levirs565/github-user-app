@@ -9,6 +9,7 @@ import com.levirs.githubuser.core.CoreProvider
 import com.levirs.githubuser.core.extension.launchToUpdateLiveData
 import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.extension.update
+import com.levirs.githubuser.core.extension.updateFromCoroutine
 import com.levirs.githubuser.core.model.DataState
 import com.levirs.githubuser.core.model.User
 import com.levirs.githubuser.core.model.UserDetails
@@ -41,19 +42,19 @@ class DetailViewModel: ViewModel() {
     }
 
     fun load() {
-        mIOScpe.launchToUpdateLiveData(mUserDetails, suspend {
+        mUserDetails.updateFromCoroutine(mIOScpe, suspend {
             mRepository.getUserDetails(mCurrentUser.userName)
         })
     }
 
     fun loadFollowingList() {
-        mIOScpe.launchToUpdateLiveData(mFollowingList, suspend {
+        mFollowingList.updateFromCoroutine(mIOScpe,  suspend {
             mRepository.getUserFollowingList(mCurrentUser.userName)
         })
     }
 
     fun loadFollowerList() {
-        mIOScpe.launchToUpdateLiveData(mFollowerList, suspend {
+        mFollowerList.updateFromCoroutine(mIOScpe, suspend {
             mRepository.getUserFollowerList(mCurrentUser.userName)
         })
     }

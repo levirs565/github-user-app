@@ -2,14 +2,13 @@ package com.levirs.githubuser.feature.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import coil.api.load
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.model.User
 import com.levirs.githubuser.core.model.UserDetails
-import com.levirs.githubuser.core.ui.setVisible
+import com.levirs.githubuser.core.extension.setVisible
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
 import kotlinx.android.synthetic.main.context_error.*

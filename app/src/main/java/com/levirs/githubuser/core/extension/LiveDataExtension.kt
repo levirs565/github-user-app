@@ -15,24 +15,30 @@ fun <T> MutableLiveData<T>.update(action: T.() -> Unit) {
     postValue(value)
 }
 
-fun <T> CoroutineScope.launchToUpdateLiveData(
-    liveData: MutableLiveData<DataState<T>>,
+fun <T> MutableLiveData<DataState<T>>.updateFromCoroutine(
+    scope: CoroutineScope,
     action: suspend () -> T
 ) {
-    launch {
-        liveData.update {
+    scope.launch {
+        update {
             data = null
             error = null
         }
         try {
-            val follower = action()
-            liveData.update {
-                data = follower
+            val newData = action()
+            update {
+                data = newData
             }
         } catch (e: IOException) {
-            liveData.update {
+            update {
                 error = e.message
             }
         }
     }
+}
+
+fun <T> CoroutineScope.launchToUpdateLiveData(
+    liveData: MutableLiveData<DataState<T>>,
+    action: suspend () -> T
+) {
 }
