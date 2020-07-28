@@ -34,7 +34,9 @@ class DataStatefulView @JvmOverloads constructor(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT,
             Gravity.CENTER
-        )
+        ).apply {
+            setMargins(resources.getDimensionPixelSize(R.dimen.progress_margin))
+        }
         addView(mProgressBar)
 
         mErrorLayout = LayoutInflater.from(context)
