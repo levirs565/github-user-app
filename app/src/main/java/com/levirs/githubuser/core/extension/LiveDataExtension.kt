@@ -18,8 +18,8 @@ fun <T> MutableLiveData<T>.update(action: T.() -> Unit) {
 fun <T> MutableLiveData<DataState<T>>.updateFromCoroutine(
     scope: CoroutineScope,
     action: suspend () -> T
-) {
-    scope.launch {
+): Job {
+    return scope.launch {
         update {
             data = null
             error = null
