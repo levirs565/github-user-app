@@ -18,7 +18,7 @@ class DetailViewModel: ViewModel() {
     }
 
     private val mRepository = CoreProvider.provideRepository()
-    private val mIOScpe = viewModelScope + Dispatchers.IO
+    private val mIOScope = viewModelScope + Dispatchers.IO
     private lateinit var mCurrentUser: User
     private val mUserDetails = MutableLiveData(DataState<UserDetails>())
     private val mFollowingList = MutableLiveData(DataState<List<User>>())
@@ -35,19 +35,19 @@ class DetailViewModel: ViewModel() {
     }
 
     fun load() {
-        mUserDetails.updateFromCoroutine(mIOScpe, suspend {
+        mUserDetails.updateFromCoroutine(mIOScope, suspend {
             mRepository.getUserDetails(mCurrentUser.userName)
         })
     }
 
     fun loadFollowingList() {
-        mFollowingList.updateFromCoroutine(mIOScpe,  suspend {
+        mFollowingList.updateFromCoroutine(mIOScope,  suspend {
             mRepository.getUserFollowingList(mCurrentUser.userName)
         })
     }
 
     fun loadFollowerList() {
-        mFollowerList.updateFromCoroutine(mIOScpe, suspend {
+        mFollowerList.updateFromCoroutine(mIOScope, suspend {
             mRepository.getUserFollowerList(mCurrentUser.userName)
         })
     }
