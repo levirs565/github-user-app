@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/baseline_spacing"
-    android:background="?colorPrimary"
+    tools:background="?colorPrimary"
     android:textColor="@android:color/white"
     tools:theme="@style/TextWhite"
     android:id="@+id/layout_detail">
@@ -52,7 +52,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
+        android:contentDescription="@string/company"/>
 
     <TextView
         android:id="@+id/tv_company"
@@ -78,7 +79,8 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_company"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:contentDescription="@string/location"/>
 
     <TextView
         android:id="@+id/tv_location"

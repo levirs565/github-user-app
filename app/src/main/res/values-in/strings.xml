@@ -9,7 +9,6 @@
     <string name="company">Perusahaan</string>
     <string name="location">Lokasi</string>
 
-    <string name="hello_blank_fragment">Halo, fragment kosong</string>
     <string name="action_search">Cari</string>
 
     <string name="message_cannot_load">Tidak dapat memuat %1$s. Kesalahan: \n%2$s\nCoba lagi.</string>
