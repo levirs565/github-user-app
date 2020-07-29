@@ -1,6 +1,7 @@
 package com.levirs.githubuser.core.ui.view
 
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ class DataStatefulView @JvmOverloads constructor(
     private lateinit var mProgressBar: ProgressBar
     private lateinit var mErrorLayout: View
     private var mReloadAction: (() -> Unit)? = null
+    private var mContentName = ""
 
     fun initView() {
         mDataView = getChildAt(0)
@@ -52,24 +54,25 @@ class DataStatefulView @JvmOverloads constructor(
         initView()
     }
 
-    private fun changeViewVisibility(view: Boolean, progress: Boolean, error: Boolean) {
-        mDataView.setVisible(view)
-        mProgressBar.setVisible(progress)
-        mErrorLayout.setVisible(error)
-    }
+    fun <T> updateViewState(state: DataState<T>) {
+        val isDataLoaded = state.data != null
+        val isError = state.error != null
 
-    fun showView() = changeViewVisibility(true, false, false)
+        if (isError)
+            mErrorLayout.tv_err_message.text = context.getString(
+                R.string.message_cannot_load, mContentName, state.error)
 
-    fun showLoading() = changeViewVisibility(false, true, false)
-
-    fun showError(name: String, errMessage: String) {
-        mErrorLayout.tv_err_message.text = context.getString(
-            R.string.message_cannot_load, name, errMessage)
-        changeViewVisibility(false, false, true)
+        mDataView.setVisible(isDataLoaded)
+        mErrorLayout.setVisible(isError)
+        mProgressBar.setVisible(!isError && !isDataLoaded)
     }
 
     fun setReloadAction(l: (() -> Unit)?) {
         mReloadAction = l
+    }
+
+    fun setContentName(name: String) {
+        mContentName = name
     }
 
     fun setGravity(gravity: Int) {

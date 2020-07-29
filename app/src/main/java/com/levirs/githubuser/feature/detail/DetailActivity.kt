@@ -34,17 +34,15 @@ class DetailActivity : AppCompatActivity() {
         }
 
         mViewModel.userDetails.observe(this, Observer {
-            if (it.error == null) {
-                if (it.data != null) {
-                    state_view.showView()
-                    bindDetails(it.data!!)
-                } else state_view.showLoading()
-            } else state_view.showError(getString(R.string.user_details), it.error!!)
+            if (it.data != null)
+                bindDetails(it.data!!)
+            state_view.updateViewState(it)
         })
 
         state_view.setReloadAction {
             mViewModel.load()
         }
+        state_view.setContentName(getString(R.string.user_details))
 
         view_pager.adapter = DetailPagerAdapter(supportFragmentManager, this)
         tab_layout.setupWithViewPager(view_pager)

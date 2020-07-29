@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.model.User
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.fragment_user_list.*
 
 /**
@@ -47,8 +48,8 @@ abstract class UserListFragment : Fragment() {
         root_view.showLoading()
     }
 
-    fun showError(listName: String, errMessage: String) {
-        root_view.showError(listName, errMessage)
+    fun setListContentName(name: String) {
+        root_view.setContentName(name)
     }
 
     fun setGravity(gravity: Int) {

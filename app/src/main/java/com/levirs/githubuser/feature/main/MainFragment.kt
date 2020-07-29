@@ -16,13 +16,9 @@ class MainFragment: UserListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setListContentName(getString(R.string.user_list))
         mViewModel.userList.observe(viewLifecycleOwner, Observer {
-            if (it.error == null) {
-                if (it.data != null) {
-                    setUserList(it.data!!)
-                    showView()
-                } else showLoading()
-            } else showError(getString(R.string.user_list), it.error!!)
+            updateListState(it)
         })
     }
 

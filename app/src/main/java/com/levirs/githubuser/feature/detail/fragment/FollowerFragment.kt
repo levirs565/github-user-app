@@ -18,14 +18,9 @@ class FollowerFragment: UserListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel.followerList.observe(viewLifecycleOwner, Observer {
-            if (it.error == null) {
-                val isLoading = it.data == null
-                if (!isLoading) {
-                    setUserList(it.data!!)
-                    showView()
-                } else showLoading()
-            } else showError(getString(R.string.user_follower_list), it.error!!)
+            updateListState(it)
         })
+        setListContentName(getString(R.string.user_follower_list))
         setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL)
     }
 
