@@ -30,7 +30,7 @@ class DataStatefulView @JvmOverloads constructor(
     fun initView() {
         mDataView = getChildAt(0)
         mProgressBar = ProgressBar(context, null, android.R.attr.progressBarStyle)
-        mProgressBar.layoutParams = FrameLayout.LayoutParams(
+        mProgressBar.layoutParams = LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT,
             Gravity.CENTER

@@ -3,7 +3,6 @@ package com.levirs.githubuser.feature.main
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.levirs.githubuser.R

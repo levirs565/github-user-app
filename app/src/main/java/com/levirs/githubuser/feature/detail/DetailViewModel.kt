@@ -1,23 +1,16 @@
 package com.levirs.githubuser.feature.detail
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.levirs.githubuser.core.CoreProvider
-import com.levirs.githubuser.core.extension.launchToUpdateLiveData
 import com.levirs.githubuser.core.extension.toLiveData
-import com.levirs.githubuser.core.extension.update
 import com.levirs.githubuser.core.extension.updateFromCoroutine
 import com.levirs.githubuser.core.model.DataState
 import com.levirs.githubuser.core.model.User
 import com.levirs.githubuser.core.model.UserDetails
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
-import java.io.IOException
 
 class DetailViewModel: ViewModel() {
     companion object {

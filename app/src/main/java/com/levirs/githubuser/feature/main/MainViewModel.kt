@@ -1,7 +1,6 @@
 package com.levirs.githubuser.feature.main
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,9 +9,9 @@ import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.extension.updateFromCoroutine
 import com.levirs.githubuser.core.model.DataState
 import com.levirs.githubuser.core.model.User
-import kotlinx.coroutines.*
-import java.io.IOException
-import java.lang.Exception
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.plus
 
 class MainViewModel: ViewModel() {
     companion object {

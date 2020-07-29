@@ -1,11 +1,9 @@
 package com.levirs.githubuser.feature.detail
 
 import android.content.Context
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.PagerAdapter
 import com.levirs.githubuser.R
 import com.levirs.githubuser.feature.detail.fragment.FollowerFragment
 import com.levirs.githubuser.feature.detail.fragment.FollowingFragment

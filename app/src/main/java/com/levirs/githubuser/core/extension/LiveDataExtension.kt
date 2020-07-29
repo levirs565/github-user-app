@@ -3,7 +3,6 @@ package com.levirs.githubuser.core.extension
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.levirs.githubuser.core.model.DataState
-import com.levirs.githubuser.core.model.UserDetails
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -36,10 +35,4 @@ fun <T> MutableLiveData<DataState<T>>.updateFromCoroutine(
             }
         }
     }
-}
-
-fun <T> CoroutineScope.launchToUpdateLiveData(
-    liveData: MutableLiveData<DataState<T>>,
-    action: suspend () -> T
-) {
 }
