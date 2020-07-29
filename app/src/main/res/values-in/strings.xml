@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GitHub User</string>
+    <string name="details_repo_count">%d Repository</string>
+    <string name="details_follower_count">%d Pengikut</string>
+    <string name="details_following_count">%d Mengikuti</string>
+    <string name="name">Nama</string>
+    <string name="user_name">Nama Pengguna</string>
+    <string name="company">Perusahaan</string>
+    <string name="location">Lokasi</string>
+
+    <string name="hello_blank_fragment">Halo, fragment kosong</string>
+    <string name="action_search">Cari</string>
+
+    <string name="message_cannot_load">Tidak dapat memuat %1$s. Kesalahan: \n%2$s\nCoba lagi.</string>
+    <string name="action_reload">Muat Ulang</string>
+    <string name="user_list">daftar pengguna</string>
+    <string name="user_details">detail pengguna</string>
+    <string name="user_follower_list">daftar pengikut</string>
+    <string name="user_following_list">daftar mengikuti</string>
+
+    <string name="following">Pengikut</string>
+    <string name="follower">Mengikuti</string>
+</resources>
