@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:layout_margin="16dp"
+    android:layout_margin="@dimen/baseline_spacing"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         tools:text="@string/message_cannot_load"
         android:textAlignment="center"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/baseline_spacing"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
     <Button

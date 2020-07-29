@@ -1,7 +1,6 @@
 package com.levirs.githubuser.core.ui.view
 
 import android.content.Context
-import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -9,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ProgressBar
-import androidx.core.view.marginBottom
 import androidx.core.view.setMargins
-import androidx.core.view.updateLayoutParams
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.extension.setVisible
 import com.levirs.githubuser.core.model.DataState
@@ -38,7 +35,7 @@ class DataStatefulView @JvmOverloads constructor(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             Gravity.CENTER
         ).apply {
-            setMargins(resources.getDimensionPixelSize(R.dimen.progress_margin))
+            setMargins(resources.getDimensionPixelSize(R.dimen.baseline_spacing))
         }
         addView(mProgressBar)
 
