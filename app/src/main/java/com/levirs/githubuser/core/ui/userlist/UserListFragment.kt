@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.levirs.githubuser.R
+import com.levirs.githubuser.core.model.DataState
 import com.levirs.githubuser.core.model.User
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.fragment_user_list.*
@@ -31,21 +32,17 @@ abstract class UserListFragment : Fragment() {
         adapter = UserListAdapter()
         rv_user.layoutManager = LinearLayoutManager(context)
         rv_user.adapter = adapter
+        rv_user.itemAnimator = SlideInLeftAnimator()
         root_view.setReloadAction {
             reloadList()
         }
     }
 
-    fun setUserList(list: List<User>) {
-        adapter.setUserList(list)
-    }
-
-    fun showView() {
-        root_view.showView()
-    }
-
-    fun showLoading() {
-        root_view.showLoading()
+    fun updateListState(state: DataState<List<User>>) {
+        root_view.updateViewState(state)
+        if (state.data != null)
+            adapter.addUserList(state.data!!)
+        else adapter.clearUserList()
     }
 
     fun setListContentName(name: String) {

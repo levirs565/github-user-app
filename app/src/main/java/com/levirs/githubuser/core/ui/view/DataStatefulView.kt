@@ -14,6 +14,7 @@ import androidx.core.view.setMargins
 import androidx.core.view.updateLayoutParams
 import com.levirs.githubuser.R
 import com.levirs.githubuser.core.extension.setVisible
+import com.levirs.githubuser.core.model.DataState
 import kotlinx.android.synthetic.main.content_error.view.*
 
 /**

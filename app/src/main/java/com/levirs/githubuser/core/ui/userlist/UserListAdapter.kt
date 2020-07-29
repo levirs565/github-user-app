@@ -16,10 +16,15 @@ import kotlinx.android.synthetic.main.item_user.view.*
 class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
     private var mUserList = arrayListOf<User>()
 
-    fun setUserList(list: List<User>) {
-        mUserList.clear()
+    fun addUserList(list: List<User>) {
         mUserList.addAll(list)
-        notifyDataSetChanged()
+        notifyItemRangeInserted(0, list.size)
+    }
+
+    fun clearUserList() {
+        val oldSize = mUserList.size
+        mUserList.clear()
+        notifyItemRangeRemoved(0, oldSize)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
