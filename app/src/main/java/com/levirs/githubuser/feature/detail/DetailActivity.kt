@@ -37,6 +37,13 @@ class DetailActivity : AppCompatActivity() {
                 bindDetails(it.data!!)
             state_view.updateViewState(it)
         })
+        mViewModel.isFavorite.observe(this, Observer {
+            fab_favorite.setImageResource(if (it)
+                R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_not_favorite_24)
+        })
+        fab_favorite.setOnClickListener {
+            mViewModel.toggleFavorite()
+        }
 
         state_view.setReloadAction {
             mViewModel.load()
