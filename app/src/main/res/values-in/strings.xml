@@ -29,4 +29,9 @@
 
     <string name="reminder_title">Fitur Pengingat</string>
     <string name="reminder_summary">Ingatkan pada 09.00 pagi</string>
+    <string name="reminder_enabled">Pengingat diaktifkan</string>
+    <string name="reminder_disabled">Pengingat dinonaktifkan</string>
+
+    <string name="notification_reminder_title">Pengingat GitHub</string>
+    <string name="notification_reminder_text">Ayo buka Aplikasi Github User</string>
 </resources>

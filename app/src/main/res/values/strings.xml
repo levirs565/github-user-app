@@ -28,5 +28,9 @@
 
     <string name="reminder_title">Reminder Feature</string>
     <string name="reminder_summary">Reminder at 09.00 AM</string>
+    <string name="reminder_enabled">Reminder enabled</string>
+    <string name="reminder_disabled">Reminder disabled</string>
 
+    <string name="notification_reminder_title">GitHub Reminder</string>
+    <string name="notification_reminder_text">Let open Github User App</string>
 </resources>

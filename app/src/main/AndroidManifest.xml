@@ -11,13 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".feature.reminder.ReminderReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".feature.settings.SettingsActivity"
             android:label="@string/title_settings"
             android:parentActivityName=".feature.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".feature.main.MainActivity"/>
+                android:value=".feature.main.MainActivity" />
         </activity>
         <activity
             android:name=".feature.favorite.FavoriteActivity"
