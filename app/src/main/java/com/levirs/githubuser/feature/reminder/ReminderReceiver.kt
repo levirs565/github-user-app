@@ -24,7 +24,7 @@ class ReminderReceiver : BroadcastReceiver() {
         }
 
         val mainIntent = Intent(context, MainActivity::class.java)
-        mainIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        mainIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         val pendingIntent = PendingIntent.getActivity(context,
             Reminder.INTENT_ACTIVITY_ID, mainIntent, PendingIntent.FLAG_CANCEL_CURRENT)
         val notification = NotificationCompat.Builder(context, Reminder.CHANNEL_ID)
