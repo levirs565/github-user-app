@@ -2,12 +2,15 @@ package com.levirs.githubuser.feature.main
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.levirs.githubuser.R
+import com.levirs.githubuser.feature.favorite.FavoriteActivity
 
 class MainActivity : AppCompatActivity(), MainFragment.Listener {
     private val mViewModel: MainViewModel by viewModels()
@@ -47,6 +50,15 @@ class MainActivity : AppCompatActivity(), MainFragment.Listener {
         })
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_favorite) {
+            val favoriteIntent = Intent(this, FavoriteActivity::class.java)
+            startActivity(favoriteIntent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun load(newText: String?) {

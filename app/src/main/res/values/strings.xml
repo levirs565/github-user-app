@@ -16,7 +16,11 @@
     <string name="user_details">user details</string>
     <string name="user_follower_list">user follower list</string>
     <string name="user_following_list">user following list</string>
+    <string name="favorite_list">favorite list</string>
 
     <string name="following">Following</string>
     <string name="follower">Follower</string>
+
+    <string name="action_favorite">Favorite</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

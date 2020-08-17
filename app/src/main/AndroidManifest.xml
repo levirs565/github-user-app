@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.levirs.githubuser">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,16 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".feature.favorite.FavoriteActivity"
             android:parentActivityName=".feature.main.MainActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".feature.main.MainActivity"/>
-
         </activity>
-        <activity android:name=".feature.main.MainActivity"
+        <activity
+            android:name=".feature.detail.DetailActivity"
+            android:parentActivityName=".feature.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".feature.main.MainActivity" />
+        </activity>
+        <activity
+            android:name=".feature.main.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

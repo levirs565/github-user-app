@@ -17,7 +17,11 @@
     <string name="user_details">detail pengguna</string>
     <string name="user_follower_list">daftar pengikut</string>
     <string name="user_following_list">daftar mengikuti</string>
+    <string name="favorite_list">daftar favorit</string>
 
     <string name="following">Pengikut</string>
     <string name="follower">Mengikuti</string>
+
+    <string name="action_favorite">Favorit</string>
+    <string name="title_favorite">Favorit</string>
 </resources>
