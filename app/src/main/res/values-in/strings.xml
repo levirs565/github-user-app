@@ -23,5 +23,10 @@
     <string name="follower">Mengikuti</string>
 
     <string name="action_favorite">Favorit</string>
+    <string name="action_settings">Pengaturan</string>
     <string name="title_favorite">Favorit</string>
+    <string name="title_settings">Pengaturan</string>
+
+    <string name="reminder_title">Fitur Pengingat</string>
+    <string name="reminder_summary">Ingatkan pada 09.00 pagi</string>
 </resources>

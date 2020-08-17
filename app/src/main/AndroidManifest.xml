@@ -12,11 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".feature.favorite.FavoriteActivity"
+            android:name=".feature.settings.SettingsActivity"
+            android:label="@string/title_settings"
             android:parentActivityName=".feature.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".feature.main.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".feature.favorite.FavoriteActivity"
+            android:parentActivityName=".feature.main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".feature.main.MainActivity" />
         </activity>
         <activity
             android:name=".feature.detail.DetailActivity"

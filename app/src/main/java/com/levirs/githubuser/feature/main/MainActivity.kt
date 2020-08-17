@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.levirs.githubuser.R
 import com.levirs.githubuser.feature.favorite.FavoriteActivity
+import com.levirs.githubuser.feature.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity(), MainFragment.Listener {
     private val mViewModel: MainViewModel by viewModels()
@@ -53,10 +54,18 @@ class MainActivity : AppCompatActivity(), MainFragment.Listener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_favorite) {
-            val favoriteIntent = Intent(this, FavoriteActivity::class.java)
-            startActivity(favoriteIntent)
-            return true
+
+        when (item.itemId) {
+            R.id.action_favorite -> {
+                val favoriteIntent = Intent(this, FavoriteActivity::class.java)
+                startActivity(favoriteIntent)
+                return true
+            }
+            R.id.action_settings -> {
+                val settingsIntent = Intent(this, SettingsActivity::class.java)
+                startActivity(settingsIntent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
