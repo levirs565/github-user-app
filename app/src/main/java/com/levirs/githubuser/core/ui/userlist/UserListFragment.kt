@@ -40,9 +40,7 @@ abstract class UserListFragment : Fragment() {
 
     fun updateListState(state: DataState<List<User>>) {
         root_view.updateViewState(state)
-        if (state.data != null)
-            adapter.addUserList(state.data!!)
-        else adapter.clearUserList()
+        adapter.updateUserList(state.data ?: emptyList())
     }
 
     fun setListContentName(name: String) {

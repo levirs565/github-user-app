@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.levirs.githubuser.feature.detail.DetailActivity
@@ -14,17 +15,12 @@ import com.levirs.githubuser.core.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
-    private var mUserList = arrayListOf<User>()
+    private var mUserList: List<User> = emptyList()
 
-    fun addUserList(list: List<User>) {
-        mUserList.addAll(list)
-        notifyItemRangeInserted(0, list.size)
-    }
-
-    fun clearUserList() {
-        val oldSize = mUserList.size
-        mUserList.clear()
-        notifyItemRangeRemoved(0, oldSize)
+    fun updateUserList(list: List<User>) {
+        val diffResult = DiffUtil.calculateDiff(DiffCallback(mUserList, list))
+        mUserList = list
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,5 +63,23 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
                 it.context.startActivity(detailIntent)
             }
         }
+    }
+
+    inner class DiffCallback(
+        val old: List<User>,
+        val new: List<User>
+    ): DiffUtil.Callback() {
+        override fun getOldListSize(): Int = old.size
+
+        override fun getNewListSize(): Int = new.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return old[oldItemPosition].id == new[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return old[oldItemPosition] == new[newItemPosition]
+        }
+
     }
 }
