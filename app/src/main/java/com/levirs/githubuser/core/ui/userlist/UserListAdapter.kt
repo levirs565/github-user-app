@@ -14,7 +14,9 @@ import com.levirs.githubuser.R
 import com.levirs.githubuser.core.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
+class UserListAdapter(
+    private val mClickListener: OnItemClickListener
+): RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
     private var mUserList: List<User> = emptyList()
 
     fun updateUserList(list: List<User>) {
@@ -40,7 +42,7 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         holder.bind(mUserList[position], position == mUserList.size -1)
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imgAvatar = itemView.img_avatar
         private val tvUserName = itemView.tv_user_name
 
@@ -58,9 +60,7 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
             tvUserName.text = user.userName
 
             itemView.setOnClickListener {
-                val detailIntent = Intent(it.context, DetailActivity::class.java)
-                detailIntent.putExtra(DetailActivity.EXTRA_USER, user)
-                it.context.startActivity(detailIntent)
+                mClickListener.onItemClick(user)
             }
         }
     }
@@ -81,5 +81,9 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
             return old[oldItemPosition] == new[newItemPosition]
         }
 
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(user: User)
     }
 }

@@ -6,7 +6,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.levirs.githubuser.R
-import com.levirs.githubuser.core.ui.userlist.UserListFragment
+import com.levirs.githubuser.core.ui.userlist.AbsUserListFragment
+import com.levirs.githubuser.feature.userlist.UserListFragment
 
 class MainFragment: UserListFragment() {
     private var mListener: Listener? = null

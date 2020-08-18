@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_user_list.*
 /**
  * A simple [Fragment] subclass.
  */
-abstract class UserListFragment : Fragment() {
+abstract class AbsUserListFragment : Fragment(), UserListAdapter.OnItemClickListener {
     private lateinit var adapter: UserListAdapter
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ abstract class UserListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = UserListAdapter()
+        adapter = UserListAdapter(this)
         rv_user.layoutManager = LinearLayoutManager(context)
         rv_user.adapter = adapter
         rv_user.itemAnimator = SlideInLeftAnimator()
