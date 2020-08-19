@@ -1,4 +1,4 @@
-package com.levirs.githubuser.feature.detail.fragment
+package com.levirs.githubuser.feature.detail
 
 import android.os.Bundle
 import android.view.Gravity
@@ -9,19 +9,19 @@ import com.levirs.githubuser.R
 import com.levirs.githubuser.feature.detail.DetailViewModel
 import com.levirs.githubuser.feature.userlist.UserListFragment
 
-class FollowingFragment: UserListFragment() {
+class FollowerFragment: UserListFragment() {
     private val mViewModel: DetailViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel.followingList.observe(viewLifecycleOwner, Observer {
+        mViewModel.followerList.observe(viewLifecycleOwner, Observer {
             updateListState(it)
         })
-        setListContentName(getString(R.string.user_following_list))
+        setListContentName(getString(R.string.user_follower_list))
         setGravity(Gravity.TOP or Gravity.CENTER_HORIZONTAL)
     }
 
     override fun reloadList() {
-        mViewModel.loadFollowingList()
+        mViewModel.loadFollowerList()
     }
 }
