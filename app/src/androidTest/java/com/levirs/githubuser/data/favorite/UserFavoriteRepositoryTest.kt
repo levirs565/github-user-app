@@ -1,18 +1,14 @@
-package com.levirs.githubuser.core.repository
+package com.levirs.githubuser.data.favorite
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.levirs.githubuser.core.database.AppDatabase
+import com.levirs.githubuser.data.AppDatabase
 import com.levirs.githubuser.core.model.User
 import com.levirs.githubuser.util.getOrAwaitValue
-import com.levirs.githubuser.util.observeForTesting
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import org.junit.After
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
@@ -33,7 +29,8 @@ class UserFavoriteRepositoryTest {
     fun openDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
-        userFavoriteRepository = UserFavoriteRepository(db.userFavoriteDao())
+        userFavoriteRepository =
+            UserFavoriteRepository(db.userFavoriteDao())
     }
 
     @After

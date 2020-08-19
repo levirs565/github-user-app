@@ -2,7 +2,7 @@ package com.levirs.githubuser.feature.detail
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.levirs.githubuser.core.CoreProvider
+import com.levirs.githubuser.data.DataProvider
 import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.extension.updateFromCoroutine
 import com.levirs.githubuser.core.model.DataState
@@ -17,8 +17,8 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         val TAG = DetailViewModel::class.java.simpleName
     }
 
-    private val mRepository = CoreProvider.provideRepository()
-    private val mUserFavoriteRepository = CoreProvider.provideUserFavoriteRepository(application)
+    private val mRepository = DataProvider.provideRepository()
+    private val mUserFavoriteRepository = DataProvider.provideUserFavoriteRepository(application)
     private val mIOScope = viewModelScope + Dispatchers.IO
     private lateinit var mCurrentUser: User
     private val mUserDetails = MutableLiveData(DataState<UserDetails>())

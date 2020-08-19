@@ -1,8 +1,5 @@
-package com.levirs.githubuser.core.service
+package com.levirs.githubuser.data.github
 
-import com.levirs.githubuser.core.model.SearchResult
-import com.levirs.githubuser.core.model.User
-import com.levirs.githubuser.core.model.UserDetails
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,13 +27,13 @@ interface GithubService {
     }
 
     @GET("users")
-    suspend fun getUserList(): List<User>
+    suspend fun getUserList(): List<GithubUserEntity>
     @GET("search/users")
-    suspend fun searchUser(@Query("q") query: String): SearchResult<User>
+    suspend fun searchUser(@Query("q") query: String): GithubSearchEntity<GithubUserEntity>
     @GET("users/{userName}")
-    suspend fun getUserDetails(@Path("userName") userName: String): UserDetails
+    suspend fun getUserDetails(@Path("userName") userName: String): GithubUserDetailsEntity
     @GET("users/{userName}/followers")
-    suspend fun getUserFollowerList(@Path("userName") userName: String): List<User>
+    suspend fun getUserFollowerList(@Path("userName") userName: String): List<GithubUserEntity>
     @GET("users/{userName}/following")
-    suspend fun getUserFollowingList(@Path("userName") userName: String): List<User>
+    suspend fun getUserFollowingList(@Path("userName") userName: String): List<GithubUserEntity>
 }

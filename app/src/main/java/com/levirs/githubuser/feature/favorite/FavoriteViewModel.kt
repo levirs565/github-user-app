@@ -2,9 +2,9 @@ package com.levirs.githubuser.feature.favorite
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.levirs.githubuser.core.CoreProvider
+import com.levirs.githubuser.data.DataProvider
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-    private val mUserFavoriteRepository = CoreProvider.provideUserFavoriteRepository(application)
+    private val mUserFavoriteRepository = DataProvider.provideUserFavoriteRepository(application)
     val userFavoriteList = mUserFavoriteRepository.getAllFavorite()
 }

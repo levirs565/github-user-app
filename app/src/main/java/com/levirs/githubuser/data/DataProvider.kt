@@ -1,12 +1,11 @@
-package com.levirs.githubuser.core
+package com.levirs.githubuser.data
 
 import android.content.Context
-import com.levirs.githubuser.core.database.AppDatabase
-import com.levirs.githubuser.core.repository.GithubRepository
-import com.levirs.githubuser.core.repository.UserFavoriteRepository
-import com.levirs.githubuser.core.service.GithubService
+import com.levirs.githubuser.data.github.GithubRepository
+import com.levirs.githubuser.data.favorite.UserFavoriteRepository
+import com.levirs.githubuser.data.github.GithubService
 
-object CoreProvider {
+object DataProvider {
     private val mGithubService by lazy {
         GithubService.newInstance()
     }
@@ -21,11 +20,16 @@ object CoreProvider {
         mAppDatabase ?: AppDatabase.newInstance(context).also { mAppDatabase = it }
     }
 
-    fun provideRepository() = mGithubRepository
+    fun provideRepository() =
+        mGithubRepository
     fun provideUserFavoriteRepository(context: Context): UserFavoriteRepository
         = mUserFavoriteRepository ?: synchronized(UserFavoriteRepository::class) {
         mUserFavoriteRepository
-            ?: UserFavoriteRepository(provideAppDatabase(context).userFavoriteDao()).also {
+            ?: UserFavoriteRepository(
+                provideAppDatabase(
+                    context
+                ).userFavoriteDao()
+            ).also {
                 mUserFavoriteRepository = it
             }
     }

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.levirs.githubuser.core.CoreProvider
+import com.levirs.githubuser.data.DataProvider
 import com.levirs.githubuser.core.extension.toLiveData
 import com.levirs.githubuser.core.extension.updateFromCoroutine
 import com.levirs.githubuser.core.model.DataState
@@ -18,7 +18,7 @@ class MainViewModel: ViewModel() {
         val TAG = MainViewModel::class.java.simpleName
     }
 
-    private val mRepository = CoreProvider.provideRepository()
+    private val mRepository = DataProvider.provideRepository()
     private val mIOScope = viewModelScope + Dispatchers.IO
     private var mJob: Job? = null
     private val mUserList = MutableLiveData(DataState<List<User>>())
