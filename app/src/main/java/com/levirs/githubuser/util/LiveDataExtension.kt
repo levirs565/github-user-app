@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.extension
+package com.levirs.githubuser.util
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

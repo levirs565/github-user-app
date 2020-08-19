@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.levirs.githubuser.data.DataProvider
-import com.levirs.githubuser.core.extension.toLiveData
-import com.levirs.githubuser.core.extension.updateFromCoroutine
+import com.levirs.githubuser.util.toLiveData
+import com.levirs.githubuser.util.updateFromCoroutine
 import com.levirs.githubuser.common.model.DataState
 import com.levirs.githubuser.common.model.User
 import kotlinx.coroutines.Dispatchers
