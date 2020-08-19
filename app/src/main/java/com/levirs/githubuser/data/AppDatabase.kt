@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.levirs.githubuser.data.favorite.UserFavoriteDao
+import com.levirs.githubuser.data.favorite.FavoriteUserDao
 import com.levirs.githubuser.data.favorite.UserFavoriteEntity
 
 @Database(entities = [UserFavoriteEntity::class], version = 1)
@@ -14,5 +14,5 @@ abstract class AppDatabase: RoomDatabase() {
             = Room.databaseBuilder(context, AppDatabase::class.java, "app-database").build()
     }
 
-    abstract fun userFavoriteDao(): UserFavoriteDao
+    abstract fun favoriteUserDao(): FavoriteUserDao
 }

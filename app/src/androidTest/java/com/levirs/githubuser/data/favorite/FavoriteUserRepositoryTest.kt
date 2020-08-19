@@ -16,9 +16,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class UserFavoriteRepositoryTest {
+class FavoriteUserRepositoryTest {
     private val mockUser = User(id = 1, userName = "tai", avatar = "blank")
-    private lateinit var userFavoriteRepository: UserFavoriteRepository
+    private lateinit var favoriteUserRepository: FavoriteUserRepository
     private lateinit var db: AppDatabase
 
     @Rule
@@ -29,8 +29,8 @@ class UserFavoriteRepositoryTest {
     fun openDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
-        userFavoriteRepository =
-            UserFavoriteRepository(db.userFavoriteDao())
+        favoriteUserRepository =
+            FavoriteUserRepository(db.favoriteUserDao())
     }
 
     @After
@@ -40,15 +40,15 @@ class UserFavoriteRepositoryTest {
 
     @Test
     fun favoriteLiveDataTest() = runBlocking(Dispatchers.IO) {
-        val isFavorite = userFavoriteRepository.isFavorite(mockUser)
+        val isFavorite = favoriteUserRepository.isFavorite(mockUser)
 
-        userFavoriteRepository.addToFavorite(mockUser)
+        favoriteUserRepository.addToFavorite(mockUser)
         assertEquals(isFavorite.getOrAwaitValue(), true)
-        userFavoriteRepository.removeFromFavorite(mockUser)
+        favoriteUserRepository.removeFromFavorite(mockUser)
         assertEquals(isFavorite.getOrAwaitValue(), false)
-        userFavoriteRepository.addToFavorite(mockUser)
+        favoriteUserRepository.addToFavorite(mockUser)
         assertEquals(isFavorite.getOrAwaitValue(), true)
-        userFavoriteRepository.removeFromFavorite(mockUser)
+        favoriteUserRepository.removeFromFavorite(mockUser)
         assertEquals(isFavorite.getOrAwaitValue(), false)
 
 
@@ -56,19 +56,19 @@ class UserFavoriteRepositoryTest {
 
     @Test
     fun doubleTest() = runBlocking(Dispatchers.IO) {
-        val liveData = userFavoriteRepository.getAllFavorite()
+        val liveData = favoriteUserRepository.getAllFavorite()
 
         assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), emptyArray())
 
-        userFavoriteRepository.addToFavorite(mockUser)
-        userFavoriteRepository.addToFavorite(mockUser)
-        userFavoriteRepository.addToFavorite(mockUser)
+        favoriteUserRepository.addToFavorite(mockUser)
+        favoriteUserRepository.addToFavorite(mockUser)
+        favoriteUserRepository.addToFavorite(mockUser)
 
         assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), arrayOf(mockUser))
 
-        userFavoriteRepository.removeFromFavorite(mockUser)
-        userFavoriteRepository.removeFromFavorite(mockUser)
-        userFavoriteRepository.removeFromFavorite(mockUser)
+        favoriteUserRepository.removeFromFavorite(mockUser)
+        favoriteUserRepository.removeFromFavorite(mockUser)
+        favoriteUserRepository.removeFromFavorite(mockUser)
 
         assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), emptyArray())
     }

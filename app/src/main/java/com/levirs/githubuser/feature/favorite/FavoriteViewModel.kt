@@ -5,6 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import com.levirs.githubuser.data.DataProvider
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-    private val mUserFavoriteRepository = DataProvider.provideUserFavoriteRepository(application)
+    private val mUserFavoriteRepository = DataProvider.provideFavoriteUserRepository(application)
     val userFavoriteList = mUserFavoriteRepository.getAllFavorite()
 }

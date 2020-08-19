@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface UserFavoriteDao {
+interface FavoriteUserDao {
     @Query("SELECT * FROM user")
     fun getAll(): LiveData<List<UserFavoriteEntity>>
 

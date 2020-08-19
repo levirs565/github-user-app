@@ -2,7 +2,7 @@ package com.levirs.githubuser.data
 
 import android.content.Context
 import com.levirs.githubuser.data.github.GithubRepository
-import com.levirs.githubuser.data.favorite.UserFavoriteRepository
+import com.levirs.githubuser.data.favorite.FavoriteUserRepository
 import com.levirs.githubuser.data.github.GithubService
 
 object DataProvider {
@@ -13,7 +13,7 @@ object DataProvider {
         GithubRepository(mGithubService)
     }
     @Volatile private var mAppDatabase: AppDatabase? = null
-    @Volatile private var mUserFavoriteRepository: UserFavoriteRepository? = null
+    @Volatile private var mFavoriteUserRepository: FavoriteUserRepository? = null
 
     private fun provideAppDatabase(context: Context): AppDatabase
         = mAppDatabase ?: synchronized(AppDatabase::class) {
@@ -22,15 +22,15 @@ object DataProvider {
 
     fun provideRepository() =
         mGithubRepository
-    fun provideUserFavoriteRepository(context: Context): UserFavoriteRepository
-        = mUserFavoriteRepository ?: synchronized(UserFavoriteRepository::class) {
-        mUserFavoriteRepository
-            ?: UserFavoriteRepository(
+    fun provideFavoriteUserRepository(context: Context): FavoriteUserRepository
+        = mFavoriteUserRepository ?: synchronized(FavoriteUserRepository::class) {
+        mFavoriteUserRepository
+            ?: FavoriteUserRepository(
                 provideAppDatabase(
                     context
-                ).userFavoriteDao()
+                ).favoriteUserDao()
             ).also {
-                mUserFavoriteRepository = it
+                mFavoriteUserRepository = it
             }
     }
 }

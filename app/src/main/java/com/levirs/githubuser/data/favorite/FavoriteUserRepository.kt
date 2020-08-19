@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.levirs.githubuser.core.model.User
 
-class UserFavoriteRepository(private val dao: UserFavoriteDao) {
+class FavoriteUserRepository(private val dao: FavoriteUserDao) {
 
     fun getAllFavorite() = dao.getAll().map {
         it.map { entity -> entity.toUser() }
