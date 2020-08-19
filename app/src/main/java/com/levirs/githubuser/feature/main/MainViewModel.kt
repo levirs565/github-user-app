@@ -18,7 +18,7 @@ class MainViewModel: ViewModel() {
         val TAG = MainViewModel::class.java.simpleName
     }
 
-    private val mRepository = DataProvider.provideRepository()
+    private val mGithubRepository = DataProvider.provideGithubRepository()
     private val mIOScope = viewModelScope + Dispatchers.IO
     private var mJob: Job? = null
     private val mUserList = MutableLiveData(DataState<List<User>>())
@@ -33,7 +33,7 @@ class MainViewModel: ViewModel() {
         Log.d(TAG, "fetchUserList: start..")
         cancel()
         mJob = mUserList.updateFromCoroutine(mIOScope, suspend {
-            mRepository.getUserList()
+            mGithubRepository.getUserList()
         })
     }
 
@@ -41,7 +41,7 @@ class MainViewModel: ViewModel() {
         Log.d(TAG, "searchUser: start..")
         cancel()
         mJob = mUserList.updateFromCoroutine(mIOScope, suspend {
-            mRepository.searchUser(query).resultList
+            mGithubRepository.searchUser(query).resultList
         })
     }
 }

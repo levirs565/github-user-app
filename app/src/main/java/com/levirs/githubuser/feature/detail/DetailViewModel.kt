@@ -17,7 +17,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         val TAG = DetailViewModel::class.java.simpleName
     }
 
-    private val mRepository = DataProvider.provideRepository()
+    private val mGithubRepository = DataProvider.provideGithubRepository()
     private val mUserFavoriteRepository = DataProvider.provideFavoriteUserRepository(application)
     private val mIOScope = viewModelScope + Dispatchers.IO
     private lateinit var mCurrentUser: User
@@ -45,19 +45,19 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
 
     fun load() {
         mUserDetails.updateFromCoroutine(mIOScope, suspend {
-            mRepository.getUserDetails(mCurrentUser.userName)
+            mGithubRepository.getUserDetails(mCurrentUser.userName)
         })
     }
 
     fun loadFollowingList() {
         mFollowingList.updateFromCoroutine(mIOScope,  suspend {
-            mRepository.getUserFollowingList(mCurrentUser.userName)
+            mGithubRepository.getUserFollowingList(mCurrentUser.userName)
         })
     }
 
     fun loadFollowerList() {
         mFollowerList.updateFromCoroutine(mIOScope, suspend {
-            mRepository.getUserFollowerList(mCurrentUser.userName)
+            mGithubRepository.getUserFollowerList(mCurrentUser.userName)
         })
     }
 }

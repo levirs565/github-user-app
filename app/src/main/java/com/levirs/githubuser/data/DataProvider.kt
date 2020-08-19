@@ -20,7 +20,7 @@ object DataProvider {
         mAppDatabase ?: AppDatabase.newInstance(context).also { mAppDatabase = it }
     }
 
-    fun provideRepository() =
+    fun provideGithubRepository() =
         mGithubRepository
     fun provideFavoriteUserRepository(context: Context): FavoriteUserRepository
         = mFavoriteUserRepository ?: synchronized(FavoriteUserRepository::class) {
