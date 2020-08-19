@@ -1,8 +1,8 @@
 package com.levirs.githubuser.feature.userlist
 
 import android.content.Intent
-import com.levirs.githubuser.core.model.User
-import com.levirs.githubuser.core.ui.userlist.AbsUserListFragment
+import com.levirs.githubuser.common.model.User
+import com.levirs.githubuser.common.ui.userlist.AbsUserListFragment
 import com.levirs.githubuser.feature.detail.DetailActivity
 
 abstract class UserListFragment: AbsUserListFragment() {

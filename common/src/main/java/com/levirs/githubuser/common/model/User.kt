@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.model
+package com.levirs.githubuser.common.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

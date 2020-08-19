@@ -2,7 +2,7 @@ package com.levirs.githubuser.data.favorite
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.model.User
 
 class FavoriteUserRepository(private val dao: FavoriteUserDao) {
 

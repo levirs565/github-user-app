@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.model
+package com.levirs.githubuser.common.model
 
 data class DataState<T>(
     var data: T? = null,

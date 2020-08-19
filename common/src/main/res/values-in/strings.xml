@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Nama</string>
+    <string name="user_name">Nama Pengguna</string>
+    <string name="company">Perusahaan</string>
+    <string name="location">Lokasi</string>
+
+    <string name="message_cannot_load">Tidak dapat memuat %1$s. Kesalahan: \n%2$s\nCoba lagi.</string>
+    <string name="action_reload">Muat Ulang</string>
+</resources>

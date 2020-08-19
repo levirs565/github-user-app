@@ -5,7 +5,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.levirs.githubuser.data.AppDatabase
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.model.User
 import com.levirs.githubuser.util.getOrAwaitValue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -17,7 +17,11 @@ import org.junit.Rule
 import org.junit.Test
 
 class FavoriteUserRepositoryTest {
-    private val mockUser = User(id = 1, userName = "tai", avatar = "blank")
+    private val mockUser = User(
+        id = 1,
+        userName = "tai",
+        avatar = "blank"
+    )
     private lateinit var favoriteUserRepository: FavoriteUserRepository
     private lateinit var db: AppDatabase
 

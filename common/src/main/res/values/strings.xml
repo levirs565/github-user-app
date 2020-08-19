@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Name</string>
+    <string name="user_name">User Name</string>
+    <string name="company">Company</string>
+    <string name="location">Location</string>
+
+    <string name="message_cannot_load">Cannot load %1$s. Error: \n%2$s\nTry again.</string>
+    <string name="action_reload">Reload</string>
+</resources>

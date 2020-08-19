@@ -21,14 +21,14 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/TextHidden">
 
-            <com.levirs.githubuser.core.ui.view.DataStatefulView
+            <com.levirs.githubuser.common.ui.view.DataStatefulView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/state_view">
 
                 <include layout="@layout/content_detail"/>
 
-            </com.levirs.githubuser.core.ui.view.DataStatefulView>
+            </com.levirs.githubuser.common.ui.view.DataStatefulView>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="user_card_margin">8dp</dimen>
+    <dimen name="baseline_spacing">16dp</dimen>
+    <dimen name="avatar_size_small">40dp</dimen>
+    <dimen name="avatar_size_big">120dp</dimen>
+    <dimen name="list_height">72dp</dimen>
+</resources>

@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.ui.view
+package com.levirs.githubuser.common.ui.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.core.view.setMargins
-import com.levirs.githubuser.R
-import com.levirs.githubuser.core.extension.setVisible
-import com.levirs.githubuser.core.model.DataState
+import com.levirs.githubuser.common.R
+import com.levirs.githubuser.common.util.setVisible
+import com.levirs.githubuser.common.model.DataState
 import kotlinx.android.synthetic.main.content_error.view.*
 
 /**

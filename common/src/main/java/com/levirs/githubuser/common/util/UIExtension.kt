@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.extension
+package com.levirs.githubuser.common.util
 
 import android.view.View
 

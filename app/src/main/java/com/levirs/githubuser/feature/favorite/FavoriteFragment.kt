@@ -5,8 +5,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.levirs.githubuser.R
-import com.levirs.githubuser.core.model.DataState
-import com.levirs.githubuser.core.ui.userlist.AbsUserListFragment
+import com.levirs.githubuser.common.model.DataState
 import com.levirs.githubuser.feature.userlist.UserListFragment
 
 class FavoriteFragment: UserListFragment() {
@@ -19,7 +18,12 @@ class FavoriteFragment: UserListFragment() {
         updateListState(DataState(null, null))
 
         mViewModel.userFavoriteList.observe(viewLifecycleOwner, Observer {
-            updateListState(DataState(it, null))
+            updateListState(
+                DataState(
+                    it,
+                    null
+                )
+            )
         })
     }
 

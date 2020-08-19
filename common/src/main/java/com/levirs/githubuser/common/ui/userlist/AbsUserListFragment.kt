@@ -1,4 +1,4 @@
-package com.levirs.githubuser.core.ui.userlist
+package com.levirs.githubuser.common.ui.userlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.levirs.githubuser.R
-import com.levirs.githubuser.core.model.DataState
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.R
+import com.levirs.githubuser.common.model.DataState
+import com.levirs.githubuser.common.model.User
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.fragment_user_list.*
 

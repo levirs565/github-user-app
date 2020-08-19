@@ -1,7 +1,7 @@
 package com.levirs.githubuser.data.github
 
 import com.google.gson.annotations.SerializedName
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.model.User
 
 data class GithubUserEntity(
     val id: Int,

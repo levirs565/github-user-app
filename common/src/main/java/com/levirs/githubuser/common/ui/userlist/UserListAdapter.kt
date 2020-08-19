@@ -1,6 +1,5 @@
-package com.levirs.githubuser.core.ui.userlist
+package com.levirs.githubuser.common.ui.userlist
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,8 @@ import androidx.core.view.updateMargins
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.levirs.githubuser.feature.detail.DetailActivity
-import com.levirs.githubuser.R
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.R
+import com.levirs.githubuser.common.model.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserListAdapter(

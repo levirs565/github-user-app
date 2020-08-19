@@ -6,9 +6,9 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import coil.api.load
 import com.levirs.githubuser.R
-import com.levirs.githubuser.core.model.User
-import com.levirs.githubuser.core.model.UserDetails
-import com.levirs.githubuser.core.extension.setVisible
+import com.levirs.githubuser.common.model.User
+import com.levirs.githubuser.common.model.UserDetails
+import com.levirs.githubuser.common.util.setVisible
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
 

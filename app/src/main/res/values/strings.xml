@@ -3,15 +3,10 @@
     <string name="details_repo_count">%d Repository</string>
     <string name="details_follower_count">%d Follower</string>
     <string name="details_following_count">%d Following</string>
-    <string name="name">Name</string>
-    <string name="user_name">User Name</string>
-    <string name="company">Company</string>
-    <string name="location">Location</string>
 
     <string name="action_search">Search</string>
 
-    <string name="message_cannot_load">Cannot load %1$s. Error: \n%2$s\nTry again.</string>
-    <string name="action_reload">Reload</string>
+
     <string name="user_list">user list</string>
     <string name="user_details">user details</string>
     <string name="user_follower_list">user follower list</string>

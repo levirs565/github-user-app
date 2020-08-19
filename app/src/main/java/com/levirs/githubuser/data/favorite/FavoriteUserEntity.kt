@@ -3,7 +3,7 @@ package com.levirs.githubuser.data.favorite
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.levirs.githubuser.core.model.User
+import com.levirs.githubuser.common.model.User
 
 @Entity(tableName = "user")
 data class UserFavoriteEntity(

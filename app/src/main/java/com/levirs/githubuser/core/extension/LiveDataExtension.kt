@@ -2,7 +2,7 @@ package com.levirs.githubuser.core.extension
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.levirs.githubuser.core.model.DataState
+import com.levirs.githubuser.common.model.DataState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch

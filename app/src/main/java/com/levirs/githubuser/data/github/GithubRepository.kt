@@ -1,6 +1,6 @@
 package com.levirs.githubuser.data.github
 
-import com.levirs.githubuser.core.model.SearchResult
+import com.levirs.githubuser.common.model.SearchResult
 
 class GithubRepository(private val service: GithubService) {
     suspend fun getUserList() = service.getUserList().map { it.toUser() }
