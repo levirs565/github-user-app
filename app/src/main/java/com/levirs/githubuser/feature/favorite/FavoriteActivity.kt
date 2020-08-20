@@ -15,6 +15,9 @@ class FavoriteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
 
+        if (!mViewModel.isInitialized)
+            mViewModel.init()
+
         supportActionBar?.title = getString(R.string.title_favorite)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (savedInstanceState == null) {

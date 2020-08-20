@@ -11,10 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".provider.FavoriteUserContentProvider"
+            android:authorities="com.levirs.githubuser"
+            android:enabled="true"
+            android:exported="true"></provider>
+
         <receiver
             android:name=".feature.reminder.ReminderReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".feature.settings.SettingsActivity"

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import com.levirs.githubuser.common.data.favorite.FavoriteUserContract.toMultipleUser
 import com.levirs.githubuser.data.AppDatabase
 import com.levirs.githubuser.common.model.User
 import com.levirs.githubuser.util.getOrAwaitValue
@@ -44,36 +45,36 @@ class FavoriteUserDataSourceTest {
 
     @Test
     fun favoriteLiveDataTest() = runBlocking(Dispatchers.IO) {
-        val isFavorite = favoriteUserRepository.isFavorite(mockUser)
+        fun isFavorite() = favoriteUserRepository.getById(mockUser.id).moveToFirst()
 
         favoriteUserRepository.addToFavorite(mockUser)
-        assertEquals(isFavorite.getOrAwaitValue(), true)
+        assertEquals(isFavorite(), true)
         favoriteUserRepository.removeFromFavorite(mockUser)
-        assertEquals(isFavorite.getOrAwaitValue(), false)
+        assertEquals(isFavorite(), false)
         favoriteUserRepository.addToFavorite(mockUser)
-        assertEquals(isFavorite.getOrAwaitValue(), true)
+        assertEquals(isFavorite(), true)
         favoriteUserRepository.removeFromFavorite(mockUser)
-        assertEquals(isFavorite.getOrAwaitValue(), false)
+        assertEquals(isFavorite(), false)
 
 
     }
 
     @Test
     fun doubleTest() = runBlocking(Dispatchers.IO) {
-        val liveData = favoriteUserRepository.getAllFavorite()
+        fun getAllFavorite() = favoriteUserRepository.getAllFavorite().toMultipleUser().toTypedArray()
 
-        assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), emptyArray())
+        assertArrayEquals(getAllFavorite(), emptyArray())
 
         favoriteUserRepository.addToFavorite(mockUser)
         favoriteUserRepository.addToFavorite(mockUser)
         favoriteUserRepository.addToFavorite(mockUser)
 
-        assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), arrayOf(mockUser))
+        assertArrayEquals(getAllFavorite(), arrayOf(mockUser))
 
         favoriteUserRepository.removeFromFavorite(mockUser)
         favoriteUserRepository.removeFromFavorite(mockUser)
         favoriteUserRepository.removeFromFavorite(mockUser)
 
-        assertArrayEquals(liveData.getOrAwaitValue().toTypedArray(), emptyArray())
+        assertArrayEquals(getAllFavorite(), emptyArray())
     }
 }

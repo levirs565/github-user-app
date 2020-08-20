@@ -1,6 +1,8 @@
 package com.levirs.githubuser.feature.detail
 
 import android.app.Application
+import android.database.ContentObserver
+import android.os.Handler
 import androidx.lifecycle.*
 import com.levirs.githubuser.data.DataProvider
 import com.levirs.githubuser.util.toLiveData
@@ -18,20 +20,36 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private val mGithubRepository = DataProvider.provideGithubRepository()
-    private val mUserFavoriteRepository = DataProvider.provideFavoriteUserDataSource(application)
+    private val mUserFavoriteRepository = DataProvider.provideFavoriteUserRepository(application)
     private val mIOScope = viewModelScope + Dispatchers.IO
     private lateinit var mCurrentUser: User
     private val mUserDetails = MutableLiveData(DataState<UserDetails>())
     private val mFollowingList = MutableLiveData(DataState<List<User>>())
     private val mFollowerList = MutableLiveData(DataState<List<User>>())
+    private val mIsFavorite = MutableLiveData<Boolean>()
     val userDetails = mUserDetails.toLiveData()
     val followingList = mFollowingList.toLiveData()
     val followerList = mFollowerList.toLiveData()
-    lateinit var isFavorite: LiveData<Boolean>
+    val isFavorite: LiveData<Boolean> = mIsFavorite
+    var isInitialized = false
+
+    fun init() {
+        mUserFavoriteRepository.registerObserver(mContentObserver)
+        isInitialized = true
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        mUserFavoriteRepository.unregisterObserver(mContentObserver)
+    }
+
+    private fun updateIsFavorite() = mIOScope.launch {
+        mIsFavorite.postValue(mUserFavoriteRepository.isFavorite(mCurrentUser))
+    }
 
     fun setUser(user: User) {
         mCurrentUser = user
-        isFavorite = mUserFavoriteRepository.isFavorite(mCurrentUser)
+        updateIsFavorite()
         load()
         loadFollowingList()
         loadFollowerList()
@@ -59,5 +77,11 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
         mFollowerList.updateFromCoroutine(mIOScope, suspend {
             mGithubRepository.getUserFollowerList(mCurrentUser.userName)
         })
+    }
+
+    private val mContentObserver = object : ContentObserver(Handler()) {
+        override fun onChange(selfChange: Boolean) {
+            updateIsFavorite()
+        }
     }
 }

@@ -6,17 +6,10 @@ import com.levirs.githubuser.common.model.User
 
 class FavoriteUserDataSource(private val dao: FavoriteUserDao) {
 
-    fun getAllFavorite() = dao.getAll().map {
-        it.map { entity -> entity.toUser() }
-    }
+    fun getAllFavorite() = dao.getAll()
+    fun getById(id: Int) = dao.getById(id)
 
-    fun isFavorite(user: User): LiveData<Boolean> {
-        return dao.getByUserName(user.userName).map {
-            it != null
-        }
-    }
-
-    suspend fun addToFavorite(user: User) = dao.insert(user.toEntity())
-    suspend fun removeFromFavorite(user: User) = dao.delete(user.toEntity())
+    fun addToFavorite(user: User) = dao.insert(user.toEntity())
+    fun removeFromFavorite(user: User) = dao.delete(user.toEntity())
 
 }

@@ -1,19 +1,20 @@
 package com.levirs.githubuser.data.favorite
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface FavoriteUserDao {
     @Query("SELECT * FROM user")
-    fun getAll(): LiveData<List<UserFavoriteEntity>>
+    fun getAll(): Cursor
 
-    @Query("SELECT * FROM user WHERE user_name = :userName")
-    fun getByUserName(userName: String): LiveData<UserFavoriteEntity?>
+    @Query("SELECT * FROM user WHERE id = :id")
+    fun getById(id: Int): Cursor
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(user: UserFavoriteEntity)
+    fun insert(user: UserFavoriteEntity): Long
 
     @Delete
-    suspend fun delete(user: UserFavoriteEntity)
+    fun delete(user: UserFavoriteEntity): Int
 }

@@ -26,6 +26,9 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        if (!mViewModel.isInitialized)
+            mViewModel.init()
+
         val user: User? = intent.getParcelableExtra(EXTRA_USER)
         // cek apakah pertama kali dijalankan
         if (user != null && savedInstanceState == null) {
