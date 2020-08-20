@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.levirs.githubuser.consumer">
 
+    <uses-permission android:name="com.levirs.githubuser.favorite.READ"/>
+    <uses-permission android:name="com.levirs.githubuser.favorite.WRITE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
