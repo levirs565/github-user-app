@@ -2,6 +2,7 @@ package com.levirs.githubuser.feature.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import coil.api.load
@@ -78,5 +79,13 @@ class DetailActivity : AppCompatActivity() {
             tv_follower.text = getString(R.string.details_follower_count, followersCount)
             tv_following.text = getString(R.string.details_following_count, followingCount)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
