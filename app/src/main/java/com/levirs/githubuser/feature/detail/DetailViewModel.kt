@@ -18,7 +18,7 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private val mGithubRepository = DataProvider.provideGithubRepository()
-    private val mUserFavoriteRepository = DataProvider.provideFavoriteUserRepository(application)
+    private val mUserFavoriteRepository = DataProvider.provideFavoriteUserDataSource(application)
     private val mIOScope = viewModelScope + Dispatchers.IO
     private lateinit var mCurrentUser: User
     private val mUserDetails = MutableLiveData(DataState<UserDetails>())

@@ -16,13 +16,13 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class FavoriteUserRepositoryTest {
+class FavoriteUserDataSourceTest {
     private val mockUser = User(
         id = 1,
         userName = "tai",
         avatar = "blank"
     )
-    private lateinit var favoriteUserRepository: FavoriteUserRepository
+    private lateinit var favoriteUserRepository: FavoriteUserDataSource
     private lateinit var db: AppDatabase
 
     @Rule
@@ -34,7 +34,7 @@ class FavoriteUserRepositoryTest {
         val context = ApplicationProvider.getApplicationContext<Context>()
         db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java).build()
         favoriteUserRepository =
-            FavoriteUserRepository(db.favoriteUserDao())
+            FavoriteUserDataSource(db.favoriteUserDao())
     }
 
     @After
