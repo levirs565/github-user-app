@@ -14,6 +14,9 @@ import com.levirs.githubuser.feature.detail.DetailActivity
  * Implementation of App Widget functionality.
  */
 class FavoriteWidget : AppWidgetProvider() {
+    companion object {
+        const val ACTION_RELOAD = "action_reload"
+    }
 
     override fun onUpdate(
         context: Context,
@@ -34,6 +37,14 @@ class FavoriteWidget : AppWidgetProvider() {
         FavoriteWidgetUpdateService.stop(context)
     }
 
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+        if (intent?.action == ACTION_RELOAD) {
+            val manager = AppWidgetManager.getInstance(context)
+            val widgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, 0)
+            manager.notifyAppWidgetViewDataChanged(widgetId, R.id.stack_view)
+        }
+    }
 }
 
 internal fun updateAppWidget(
@@ -55,6 +66,13 @@ internal fun updateAppWidget(
     val pendingIntent =
         PendingIntent.getActivity(context, 0, clickIntent, PendingIntent.FLAG_UPDATE_CURRENT)
     views.setPendingIntentTemplate(R.id.stack_view, pendingIntent)
+
+    val refreshIntent = Intent(context, FavoriteWidget::class.java)
+    refreshIntent.action = FavoriteWidget.ACTION_RELOAD
+    refreshIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+    val refreshPendingIntent =
+        PendingIntent.getBroadcast(context, appWidgetId, refreshIntent, 0)
+    views.setOnClickPendingIntent(R.id.btn_reload, refreshPendingIntent)
 
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

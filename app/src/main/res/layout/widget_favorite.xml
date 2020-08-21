@@ -21,14 +21,31 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/black" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/baseline_spacing"
+        android:paddingTop="@dimen/small_text_margin"
         android:background="@color/colorPrimary"
-        android:padding="@dimen/baseline_spacing"
-        android:text="@string/favorite_widget_title"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@android:color/white" />
+        android:paddingEnd="@dimen/baseline_spacing"
+        android:paddingBottom="@dimen/small_text_margin">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/favorite_widget_title"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btn_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_reload" />
+
+    </LinearLayout>
 </LinearLayout>
