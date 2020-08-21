@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmap
 import coil.Coil
+import coil.request.ErrorResult
 import coil.request.GetRequest
 import coil.transform.CircleCropTransformation
 import com.levirs.githubuser.R
@@ -15,6 +17,7 @@ import com.levirs.githubuser.data.DataProvider
 import com.levirs.githubuser.feature.detail.DetailActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 class FavoriteWidgetFactory(val context: Context, intent: Intent) :
     RemoteViewsService.RemoteViewsFactory {
@@ -50,9 +53,21 @@ class FavoriteWidgetFactory(val context: Context, intent: Intent) :
                 .data(user.avatar)
                 .transformations(CircleCropTransformation())
                 .build()
-            Coil.imageLoader(context).execute(getRequest)
+            val result = Coil.imageLoader(context).execute(getRequest)
+
+            if (result is ErrorResult) {
+                result.throwable.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        context, "Error load image: ${result.throwable.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+
+            result
         }
-        remoteViews.setImageViewBitmap(R.id.img_avatar, requestResult.drawable!!.toBitmap())
+        remoteViews.setImageViewBitmap(R.id.img_avatar, requestResult.drawable?.toBitmap())
 
         val intent = Intent()
         intent.putExtra(DetailActivity.EXTRA_USER, user)
