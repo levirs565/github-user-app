@@ -27,15 +27,11 @@ class FavoriteWidget : AppWidgetProvider() {
     }
 
     override fun onEnabled(context: Context) {
-        val intent = Intent(context, FavoriteWidgetUpdateService::class.java)
-        intent.action = FavoriteWidgetUpdateService.ACTION_START
-        context.startService(intent)
+        FavoriteWidgetUpdateService.start(context)
     }
 
     override fun onDisabled(context: Context) {
-        val intent = Intent(context, FavoriteWidgetUpdateService::class.java)
-        intent.action = FavoriteWidgetUpdateService.ACTION_STOP
-        context.startService(intent)
+        FavoriteWidgetUpdateService.stop(context)
     }
 
 }

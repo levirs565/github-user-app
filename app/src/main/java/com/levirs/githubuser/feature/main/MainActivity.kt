@@ -3,14 +3,15 @@ package com.levirs.githubuser.feature.main
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.levirs.githubuser.R
 import com.levirs.githubuser.feature.favorite.FavoriteActivity
+import com.levirs.githubuser.feature.favoritewidget.FavoriteWidgetUpdateService
 import com.levirs.githubuser.feature.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity(), MainFragment.Listener {
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity(), MainFragment.Listener {
             mViewModel.fetchUserList()
         }
 
+        FavoriteWidgetUpdateService.start(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

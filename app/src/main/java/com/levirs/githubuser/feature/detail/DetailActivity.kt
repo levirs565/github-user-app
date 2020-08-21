@@ -1,15 +1,16 @@
 package com.levirs.githubuser.feature.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import coil.api.load
 import com.levirs.githubuser.R
 import com.levirs.githubuser.common.model.User
 import com.levirs.githubuser.common.model.UserDetails
 import com.levirs.githubuser.common.util.setVisible
+import com.levirs.githubuser.feature.favoritewidget.FavoriteWidgetUpdateService
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_detail.*
 
@@ -56,6 +57,9 @@ class DetailActivity : AppCompatActivity() {
 
         view_pager.adapter = DetailPagerAdapter(supportFragmentManager, this)
         tab_layout.setupWithViewPager(view_pager)
+
+
+        FavoriteWidgetUpdateService.start(this)
     }
 
     private fun bindDetails(user: UserDetails) {

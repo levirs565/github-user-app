@@ -3,18 +3,42 @@ package com.levirs.githubuser.feature.favoritewidget
 import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.database.ContentObserver
 import android.os.Handler
 import android.os.IBinder
+import android.util.Log
 import com.levirs.githubuser.R
 import com.levirs.githubuser.common.data.favorite.FavoriteUserRepository
 import com.levirs.githubuser.data.DataProvider
 
 class FavoriteWidgetUpdateService : Service() {
     companion object {
-        const val ACTION_START = "action_start"
-        const val ACTION_STOP = "action_stop"
+        private val TAG = FavoriteWidgetUpdateService::class.java.simpleName
+
+        fun start(context: Context) {
+            try {
+                context.startService(Intent(context, FavoriteWidgetUpdateService::class.java))
+            } catch (e: IllegalStateException) {
+                Log.d(TAG, "start: failed")
+                /**
+                 * Terjadi java.lang.IllegalStateException: Not allowed to start service Intent app is in background
+                 * Saat menjalankan service saat tidak ada activity aplikasi ini yang tampil
+                 * yaitu menambah dan menghapus widget
+                 */
+                e.printStackTrace()
+            }
+        }
+
+        fun stop(context: Context) {
+            try {
+                context.stopService(Intent(context, FavoriteWidgetUpdateService::class.java))
+            } catch (e: IllegalStateException) {
+                Log.d(TAG, "stop: failed")
+                e.printStackTrace()
+            }
+        }
     }
 
     private lateinit var mUserRepository: FavoriteUserRepository
@@ -23,40 +47,30 @@ class FavoriteWidgetUpdateService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        mUserRepository = DataProvider.provideFavoriteUserRepository(applicationContext)
-        mObserver = FavoriteContentObserver(
-            AppWidgetManager.getInstance(this),
-            ComponentName(this, FavoriteWidget::class.java),
-            Handler()
-        )
+        Log.d(TAG, "onCreate")
+        if (!mIsStarted) {
+            Log.d(TAG, "starting")
+            mUserRepository = DataProvider.provideFavoriteUserRepository(applicationContext)
+            mObserver = FavoriteContentObserver(
+                AppWidgetManager.getInstance(this),
+                ComponentName(this, FavoriteWidget::class.java),
+                Handler()
+            )
+            mUserRepository.registerObserver(mObserver)
+            mIsStarted = true
+        }
     }
 
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
-            ACTION_START -> {
-                if (!mIsStarted) {
-                    mUserRepository.registerObserver(mObserver)
-                    mIsStarted = true
-                }
-            }
-            ACTION_STOP -> {
-                if (mIsStarted) {
-                    mUserRepository.unregisterObserver(mObserver)
-                    mIsStarted = false
-                    stopSelf(startId)
-                }
-            }
-        }
-        return super.onStartCommand(intent, flags, startId)
-    }
-
     override fun onDestroy() {
-        if (mIsStarted)
+        Log.d(TAG, "onDestroy")
+        if (mIsStarted) {
             mUserRepository.unregisterObserver(mObserver)
+            mIsStarted = false
+        }
         super.onDestroy()
     }
 
