@@ -29,4 +29,7 @@
 
     <string name="notification_reminder_title">Pengingat GitHub</string>
     <string name="notification_reminder_text">Ayo buka Aplikasi Github User</string>
+
+    <string name="favorite_widget_title">Daftar Pengguna Favorit</string>
+    <string name="favorite_empty">Daftar Favorit Kosong</string>
 </resources>

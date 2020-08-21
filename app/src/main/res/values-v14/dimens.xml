@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="small_text_margin">8dp</dimen>
 
     <!--
 Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
-    <dimen name="widget_margin">8dp</dimen>
-    <dimen name="favorite_widget_image_size">100dp</dimen>
+    <dimen name="widget_margin">0dp</dimen>
+
 </resources>

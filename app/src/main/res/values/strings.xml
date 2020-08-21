@@ -28,4 +28,7 @@
 
     <string name="notification_reminder_title">GitHub Reminder</string>
     <string name="notification_reminder_text">Let open Github User App</string>
+
+    <string name="favorite_widget_title">Favorite User List</string>
+    <string name="favorite_empty">Favorite List Empty</string>
 </resources>
