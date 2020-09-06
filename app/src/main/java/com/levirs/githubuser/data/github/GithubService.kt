@@ -13,7 +13,10 @@ interface GithubService {
             val client = OkHttpClient.Builder()
                 .addInterceptor {
                     val request = it.request().newBuilder()
-                        .addHeader("Authorization", "token ***REMOVED***")
+                        .addHeader(
+                            "Authorization",
+                            "token ***REMOVED*** "
+                        )
                         .build()
                     it.proceed(request)
                 }.build()
