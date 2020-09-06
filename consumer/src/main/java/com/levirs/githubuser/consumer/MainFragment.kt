@@ -23,7 +23,7 @@ class MainFragment: AbsUserListFragment() {
         mViewModel.update()
     }
 
-    override fun onItemClick(user: User) {
+    override fun onItemClick(view: View, user: User) {
         // do nothing
     }
 }

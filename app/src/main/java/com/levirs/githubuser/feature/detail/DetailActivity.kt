@@ -2,6 +2,7 @@ package com.levirs.githubuser.feature.detail
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.ViewTreeObserver
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -17,9 +18,11 @@ import kotlinx.android.synthetic.main.content_detail.*
 class DetailActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_USER = "extra_user"
+        const val EXTRA_AVATAR_TRANSITION_NAME = "extra_avatar_transition_name"
     }
 
     private val mViewModel: DetailViewModel by viewModels()
+    private lateinit var mAvatarPreDrawListener: ViewTreeObserver.OnPreDrawListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,9 @@ class DetailActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        img_avatar.transitionName = intent.getStringExtra(EXTRA_AVATAR_TRANSITION_NAME)
+        postponeEnterTransition()
 
         if (!mViewModel.isInitialized)
             mViewModel.init()
@@ -62,10 +68,28 @@ class DetailActivity : AppCompatActivity() {
         FavoriteWidgetUpdateService.start(this)
     }
 
+    private fun schedulePostponedTransition() {
+        mAvatarPreDrawListener = ViewTreeObserver.OnPreDrawListener {
+            img_avatar.viewTreeObserver.removeOnPreDrawListener(mAvatarPreDrawListener)
+            startPostponedEnterTransition()
+            true
+        }
+        img_avatar.viewTreeObserver.addOnPreDrawListener(mAvatarPreDrawListener)
+    }
+
     private fun bindDetails(user: UserDetails) {
         with(user) {
             collapsing_toolbar.title = name
-            img_avatar.load(avatar)
+            img_avatar.load(avatar) {
+                listener(
+                    onSuccess = { _, _ ->
+                        schedulePostponedTransition()
+                    },
+                    onError = { _, _ ->
+                        schedulePostponedTransition()
+                    }
+                )
+            }
             tv_name.text = name
             tv_user_name.text = userName
 
@@ -87,7 +111,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
-            finish()
+            finishAfterTransition()
             return true
         }
         return super.onOptionsItemSelected(item)

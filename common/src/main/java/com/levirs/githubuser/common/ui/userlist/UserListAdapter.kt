@@ -55,10 +55,11 @@ class UserListAdapter(
             }
 
             imgAvatar.load(user.avatar)
+            imgAvatar.transitionName = user.userName
             tvUserName.text = user.userName
 
             itemView.setOnClickListener {
-                mClickListener.onItemClick(user)
+                mClickListener.onItemClick(it, user)
             }
         }
     }
@@ -82,6 +83,6 @@ class UserListAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(user: User)
+        fun onItemClick(view: View, user: User)
     }
 }
