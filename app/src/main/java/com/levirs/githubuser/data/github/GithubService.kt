@@ -1,5 +1,6 @@
 package com.levirs.githubuser.data.github
 
+import com.levirs.githubuser.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +16,7 @@ interface GithubService {
                     val request = it.request().newBuilder()
                         .addHeader(
                             "Authorization",
-                            "token **REMOVED** "
+                            "token ${BuildConfig.GITHUB_TOKEN}"
                         )
                         .build()
                     it.proceed(request)

@@ -7,6 +7,10 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
+    def keyStorePropertiesFile = rootProject.file("keystore.properties")
+    def keyStoreProperties = new Properties()
+    keyStoreProperties.load(new FileInputStream(keyStorePropertiesFile))
+
     defaultConfig {
         applicationId "com.levirs.githubuser"
         minSdkVersion 21
@@ -15,6 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "GITHUB_TOKEN", keyStoreProperties["github.token"]
     }
 
     buildTypes {
