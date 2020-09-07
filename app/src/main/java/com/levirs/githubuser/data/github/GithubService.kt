@@ -15,7 +15,7 @@ interface GithubService {
                     val request = it.request().newBuilder()
                         .addHeader(
                             "Authorization",
-                            "token ***REMOVED*** "
+                            "token **REMOVED** "
                         )
                         .build()
                     it.proceed(request)
